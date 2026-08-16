@@ -1,0 +1,50 @@
+{
+  "type": "record",
+  "name": "InventoryDTO",
+  "namespace": "net.wowdev.microservice.ecommerce.dto",
+  "fields": [
+    {
+      "name": "id",
+      "type": {
+        "type": "string",
+        "logicalType": "uuid"
+      }
+    },
+    {
+      "name": "product",
+      "type": "net.wowdev.microservice.ecommerce.dto.ProductDTO"
+    },
+    {
+      "name": "order",
+      "type": "net.wowdev.microservice.ecommerce.dto.OrderDTO"
+    },
+    {
+      "name": "quantity",
+      "type": "int"
+    },
+    {
+      "name": "changedQuantity",
+      "type": "int"
+    },
+    {
+      "name": "changeType",
+      "type": {
+        "type": "enum",
+        "name": "InventoryChangeType",
+        "symbols": [
+          "SELLING",
+          "RETURNING",
+          "INVENTORY_INCREASE",
+          "INVENTORY_DECREASE"
+        ]
+      }
+    },
+    {
+      "name": "createdAt",
+      "type": {
+        "type": "long",
+        "logicalType": "timestamp-millis"
+      }
+    }
+  ]
+}
