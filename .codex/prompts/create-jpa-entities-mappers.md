@@ -4,13 +4,13 @@ description: Create JPA Entity and DTO's classes from Avro object schemas and th
 ---
 
 # Generate JPA Entities, DTO's and Mappers
-In order to have a maven project with all domain objects, this project is generating all common classes
+
+In orderEntity to have a maven project with all domain objects, this project is generating all common classes
 and centralizing it, so that other projects can use it as dependency.
 
 ## DTO classes generation
 
 - Configure the Avro Maven plugin to auto-generate Java classes from schemas during the compile phase.
-
 
 ## JPA Entity classes generation
 
@@ -18,10 +18,9 @@ and centralizing it, so that other projects can use it as dependency.
 - Add the proper Jakarta annotations for each column / field in the classes.
 - Add the audit annotations to fields `createdAt` and `modifiedAt` to all entity classes, along with the
   `@EntityListeners(AuditingEntityListener.class)` annotation.
-- Create the generated enums counterparts in the entity package. 
+- Create the generated enums counterparts in the entity package.
 - Add Jakarta Persistence `@Column` annotations to entity classes accordingly.
 - Add an empty line in the code after each declared column.
-
 
 ## Entity / DTO Mapper classes generation
 
@@ -33,7 +32,6 @@ and centralizing it, so that other projects can use it as dependency.
 - Every single assignment following a builder method must be placed on its own individual line.
 - Every single argument inside the constructor must be placed on its own individual line.
 - Put the Mapper classes in the `net.wowdev.microservice.ecommerce.mapper` package.
-
 
 # General Rules
 

@@ -1,12 +1,6 @@
 package net.wowdev.microservice.ecommerce.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import java.time.Instant;
-import java.util.UUID;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +9,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.time.Instant;
+import java.util.UUID;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,7 +19,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Table(name = "addresses")
 @EntityListeners(AuditingEntityListener.class)
-public class Address {
+public class AddressEntity {
     @Id
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;

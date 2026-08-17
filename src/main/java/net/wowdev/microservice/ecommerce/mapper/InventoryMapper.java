@@ -1,41 +1,37 @@
 package net.wowdev.microservice.ecommerce.mapper;
 
 import net.wowdev.microservice.ecommerce.dto.InventoryDTO;
-import net.wowdev.microservice.ecommerce.entity.Inventory;
+import net.wowdev.microservice.ecommerce.entity.InventoryEntity;
 
 public final class InventoryMapper {
-    private InventoryMapper() {
-    }
 
-    public static Inventory toEntity(InventoryDTO dto) {
+    public static InventoryEntity toEntity(InventoryDTO dto) {
         if (dto == null) {
             return null;
         }
-        return new Inventory(
+        return new InventoryEntity(
                 dto.getId(),
                 ProductMapper.toEntity(dto.getProduct()),
                 OrderMapper.toEntity(dto.getOrder()),
                 dto.getQuantity(),
                 dto.getChangedQuantity(),
-                net.wowdev.microservice.ecommerce.entity.InventoryChangeType.valueOf(
-                        dto.getChangeType().name()),
+                dto.getChangeType(),
                 dto.getCreatedAt(),
                 null);
     }
 
-    public static InventoryDTO toDto(Inventory entity) {
+    public static InventoryDTO toDto(InventoryEntity entity) {
         if (entity == null) {
             return null;
         }
-        return InventoryDTO.newBuilder()
-                .setId(entity.getId())
-                .setProduct(ProductMapper.toDto(entity.getProduct()))
-                .setOrder(OrderMapper.toDto(entity.getOrder()))
-                .setQuantity(entity.getQuantity())
-                .setChangedQuantity(entity.getChangedQuantity())
-                .setChangeType(net.wowdev.microservice.ecommerce.dto.InventoryChangeType.valueOf(
-                        entity.getChangeType().name()))
-                .setCreatedAt(entity.getCreatedAt())
-                .build();
+        return new InventoryDTO(
+                entity.getId(),
+                ProductMapper.toDto(entity.getProductEntity()),
+                OrderMapper.toDto(entity.getOrderEntity()),
+                entity.getQuantity(),
+                entity.getChangedQuantity(),
+                entity.getChangeType(),
+                entity.getCreatedAt(),
+                entity.getModifiedAt());
     }
 }

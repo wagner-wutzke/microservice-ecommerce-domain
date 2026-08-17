@@ -26,6 +26,10 @@
       "doc": "Current lifecycle status of the order."
     },
     {
+      "name": "customer",
+      "type": "net.wowdev.microservice.ecommerce.dto.CustomerDTO"
+    },
+    {
       "name": "shippingAddress",
       "type": "net.wowdev.microservice.ecommerce.dto.AddressDTO"
     },

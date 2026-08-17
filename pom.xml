@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.wowdev.microservice</groupId>
-    <artifactId>ecommerce-domain</artifactId>
+    <groupId>net.wowdev.microservice.ecommerce</groupId>
+    <artifactId>domain</artifactId>
     <version>1.0.0</version>
 
     <properties>
@@ -63,26 +63,26 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.avro</groupId>
-                <artifactId>avro-maven-plugin</artifactId>
-                <version>${avro.version}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>schema</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <sourceDirectory>${project.basedir}/src/main/resources/avro</sourceDirectory>
-                    <stringType>String</stringType>
-                    <enableDecimalLogicalType>true</enableDecimalLogicalType>
-                    <fieldVisibility>PRIVATE</fieldVisibility>
-                    <createSetters>false</createSetters>
-                </configuration>
-            </plugin>
+            <!--            <plugin>-->
+            <!--                <groupId>org.apache.avro</groupId>-->
+            <!--                <artifactId>avro-maven-plugin</artifactId>-->
+            <!--                <version>${avro.version}</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>generate-sources</phase>-->
+            <!--                        <goals>-->
+            <!--                            <goal>schema</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--                <configuration>-->
+            <!--                    <sourceDirectory>${project.basedir}/src/main/resources/avro</sourceDirectory>-->
+            <!--                    <stringType>String</stringType>-->
+            <!--                    <enableDecimalLogicalType>true</enableDecimalLogicalType>-->
+            <!--                    <fieldVisibility>PRIVATE</fieldVisibility>-->
+            <!--                    <createSetters>false</createSetters>-->
+            <!--                </configuration>-->
+            <!--            </plugin>-->
 
             <!--  Lombok + MapStruct annotation processor ordering matters  -->
             <plugin>
@@ -110,17 +110,23 @@
                 <version>${jacoco.version}</version>
                 <executions>
                     <execution>
-                        <goals><goal>prepare-agent</goal></goals>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
                     </execution>
                     <execution>
                         <id>report</id>
                         <phase>verify</phase>
-                        <goals><goal>report</goal></goals>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
                     </execution>
                     <execution>
                         <id>check-mapper-coverage</id>
                         <phase>verify</phase>
-                        <goals><goal>check</goal></goals>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
                         <configuration>
                             <rules>
                                 <rule>

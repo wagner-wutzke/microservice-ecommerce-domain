@@ -1,23 +1,23 @@
 package net.wowdev.microservice.ecommerce.mapper;
 
+import net.wowdev.microservice.ecommerce.dto.OrderDTO;
+import net.wowdev.microservice.ecommerce.dto.OrderLineDTO;
+import net.wowdev.microservice.ecommerce.entity.OrderEntity;
+import net.wowdev.microservice.ecommerce.entity.OrderLineEntity;
+
 import java.util.List;
 import java.util.Objects;
-import net.wowdev.microservice.ecommerce.dto.OrderDTO;
-import net.wowdev.microservice.ecommerce.entity.Order;
-import net.wowdev.microservice.ecommerce.entity.OrderLine;
-import net.wowdev.microservice.ecommerce.entity.OrderStatus;
 
 public final class OrderMapper {
-    private OrderMapper() {
-    }
 
-    public static Order toEntity(OrderDTO dto) {
+    public static OrderEntity toEntity(OrderDTO dto) {
         if (dto == null) {
             return null;
         }
-        Order order = new Order(
+        OrderEntity orderEntity = new OrderEntity(
                 dto.getId(),
-                OrderStatus.valueOf(dto.getStatus().name()),
+                CustomerMapper.toEntity(dto.getCustomer()),
+                dto.getStatus(),
                 AddressMapper.toEntity(dto.getShippingAddress()),
                 AddressMapper.toEntity(dto.getBillingAddress()),
                 dto.getTotalAmount(),
@@ -29,38 +29,37 @@ public final class OrderMapper {
                 new java.util.ArrayList<>(),
                 dto.getCreatedAt(),
                 dto.getModifiedAt());
-        List<OrderLine> lines = dto.getItems().stream()
+        List<OrderLineEntity> lines = dto.getItems().stream()
                 .filter(Objects::nonNull)
                 .map(OrderLineMapper::toEntity)
                 .toList();
-        lines.forEach(line -> line.setOrder(order));
-        order.setItems(new java.util.ArrayList<>(lines));
-        return order;
+        lines.forEach(line -> line.setOrder(orderEntity));
+        orderEntity.setOrderLines(new java.util.ArrayList<>(lines));
+        return orderEntity;
     }
 
-    public static OrderDTO toDto(Order entity) {
+    public static OrderDTO toDto(OrderEntity entity) {
         if (entity == null) {
             return null;
         }
-        List<net.wowdev.microservice.ecommerce.dto.OrderLineDTO> items = entity.getItems().stream()
+        List<OrderLineDTO> items = entity.getOrderLines().stream()
                 .filter(Objects::nonNull)
                 .map(OrderLineMapper::toDto)
                 .toList();
-        return OrderDTO.newBuilder()
-                .setId(entity.getId())
-                .setStatus(net.wowdev.microservice.ecommerce.dto.OrderStatus.valueOf(
-                        entity.getStatus().name()))
-                .setShippingAddress(AddressMapper.toDto(entity.getShippingAddress()))
-                .setBillingAddress(AddressMapper.toDto(entity.getBillingAddress()))
-                .setTotalAmount(entity.getTotalAmount())
-                .setSumAmount(entity.getSumAmount())
-                .setShippingAmount(entity.getShippingAmount())
-                .setNetAmount(entity.getNetAmount())
-                .setTaxAmount(entity.getTaxAmount())
-                .setOrderNumber(entity.getOrderNumber())
-                .setItems(items)
-                .setCreatedAt(entity.getCreatedAt())
-                .setModifiedAt(entity.getModifiedAt())
-                .build();
+        return new OrderDTO(
+                entity.getId(),
+                CustomerMapper.toDto(entity.getCustomer()),
+                entity.getStatus(),
+                AddressMapper.toDto(entity.getShippingAddressEntity()),
+                AddressMapper.toDto(entity.getBillingAddressEntity()),
+                entity.getTotalAmount(),
+                entity.getSumAmount(),
+                entity.getShippingAmount(),
+                entity.getNetAmount(),
+                entity.getTaxAmount(),
+                entity.getOrderNumber(),
+                items,
+                entity.getCreatedAt(),
+                entity.getModifiedAt());
     }
 }

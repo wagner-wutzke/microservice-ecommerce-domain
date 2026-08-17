@@ -1,17 +1,15 @@
 package net.wowdev.microservice.ecommerce.mapper;
 
 import net.wowdev.microservice.ecommerce.dto.ProductDTO;
-import net.wowdev.microservice.ecommerce.entity.Product;
+import net.wowdev.microservice.ecommerce.entity.ProductEntity;
 
 public final class ProductMapper {
-    private ProductMapper() {
-    }
 
-    public static Product toEntity(ProductDTO dto) {
+    public static ProductEntity toEntity(ProductDTO dto) {
         if (dto == null) {
             return null;
         }
-        return new Product(
+        return new ProductEntity(
                 dto.getId(),
                 dto.getName(),
                 dto.getDescription(),
@@ -22,19 +20,18 @@ public final class ProductMapper {
                 dto.getModifiedAt());
     }
 
-    public static ProductDTO toDto(Product entity) {
+    public static ProductDTO toDto(ProductEntity entity) {
         if (entity == null) {
             return null;
         }
-        return ProductDTO.newBuilder()
-                .setId(entity.getId())
-                .setName(entity.getName())
-                .setDescription(entity.getDescription())
-                .setUnitPrice(entity.getUnitPrice())
-                .setCurrency(entity.getCurrency())
-                .setCategory(entity.getCategory())
-                .setCreatedAt(entity.getCreatedAt())
-                .setModifiedAt(entity.getModifiedAt())
-                .build();
+        return new ProductDTO(
+                entity.getId(),
+                entity.getName(),
+                entity.getDescription(),
+                entity.getUnitPrice(),
+                entity.getCurrency(),
+                entity.getCategory(),
+                entity.getCreatedAt(),
+                entity.getModifiedAt());
     }
 }

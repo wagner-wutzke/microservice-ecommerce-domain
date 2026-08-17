@@ -1,46 +1,41 @@
 package net.wowdev.microservice.ecommerce.mapper;
 
 import net.wowdev.microservice.ecommerce.dto.CustomerDTO;
-import net.wowdev.microservice.ecommerce.entity.Customer;
-import net.wowdev.microservice.ecommerce.entity.CustomerStatus;
+import net.wowdev.microservice.ecommerce.entity.CustomerEntity;
 
 public final class CustomerMapper {
-    private CustomerMapper() {
-    }
 
-    public static Customer toEntity(CustomerDTO dto) {
+    public static CustomerEntity toEntity(CustomerDTO dto) {
         if (dto == null) {
             return null;
         }
-        return new Customer(
+        return new CustomerEntity(
                 dto.getId(),
                 dto.getFirstName(),
                 dto.getLastName(),
                 dto.getEmail(),
                 dto.getDateOfBirth(),
-                CustomerStatus.valueOf(dto.getStatus().name()),
+                dto.getStatus(),
                 AddressMapper.toEntity(dto.getBillingAddress()),
                 AddressMapper.toEntity(dto.getShippingAddress()),
                 dto.getCreatedAt(),
                 dto.getModifiedAt());
     }
 
-    public static CustomerDTO toDto(Customer entity) {
+    public static CustomerDTO toDto(CustomerEntity entity) {
         if (entity == null) {
             return null;
         }
-        return CustomerDTO.newBuilder()
-                .setId(entity.getId())
-                .setFirstName(entity.getFirstName())
-                .setLastName(entity.getLastName())
-                .setEmail(entity.getEmail())
-                .setDateOfBirth(entity.getDateOfBirth())
-                .setStatus(net.wowdev.microservice.ecommerce.dto.CustomerStatus.valueOf(
-                        entity.getStatus().name()))
-                .setBillingAddress(AddressMapper.toDto(entity.getBillingAddress()))
-                .setShippingAddress(AddressMapper.toDto(entity.getShippingAddress()))
-                .setCreatedAt(entity.getCreatedAt())
-                .setModifiedAt(entity.getModifiedAt())
-                .build();
+        return new CustomerDTO(
+                entity.getId(),
+                entity.getFirstName(),
+                entity.getLastName(),
+                entity.getEmail(),
+                entity.getDateOfBirth(),
+                entity.getStatus(),
+                AddressMapper.toDto(entity.getBillingAddressEntity()),
+                AddressMapper.toDto(entity.getShippingAddressEntity()),
+                entity.getCreatedAt(),
+                entity.getModifiedAt());
     }
 }

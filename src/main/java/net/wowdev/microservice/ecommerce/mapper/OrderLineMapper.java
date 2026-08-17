@@ -1,37 +1,37 @@
 package net.wowdev.microservice.ecommerce.mapper;
 
 import net.wowdev.microservice.ecommerce.dto.OrderLineDTO;
-import net.wowdev.microservice.ecommerce.entity.OrderLine;
+import net.wowdev.microservice.ecommerce.entity.OrderLineEntity;
 
 public final class OrderLineMapper {
-    private OrderLineMapper() {
-    }
 
-    public static OrderLine toEntity(OrderLineDTO dto) {
+    public static OrderLineEntity toEntity(OrderLineDTO dto) {
         if (dto == null) {
             return null;
         }
-        return new OrderLine(
+        return new OrderLineEntity(
                 dto.getId(),
                 ProductMapper.toEntity(dto.getProduct()),
                 null,
                 dto.getQuantity(),
                 dto.getPrice(),
                 dto.getLineAmount(),
-                null,
-                null);
+                dto.getCreatedAt(),
+                dto.getModifiedAt());
     }
 
-    public static OrderLineDTO toDto(OrderLine entity) {
+    public static OrderLineDTO toDto(OrderLineEntity entity) {
         if (entity == null) {
             return null;
         }
-        return OrderLineDTO.newBuilder()
-                .setId(entity.getId())
-                .setProduct(ProductMapper.toDto(entity.getProduct()))
-                .setQuantity(entity.getQuantity())
-                .setPrice(entity.getPrice())
-                .setLineAmount(entity.getLineAmount())
-                .build();
+        return new OrderLineDTO(
+                entity.getId(),
+                ProductMapper.toDto(entity.getProduct()),
+                null,
+                entity.getQuantity(),
+                entity.getPrice(),
+                entity.getLineAmount(),
+                entity.getCreatedAt(),
+                entity.getModifiedAt());
     }
 }

@@ -1,17 +1,15 @@
 package net.wowdev.microservice.ecommerce.mapper;
 
 import net.wowdev.microservice.ecommerce.dto.AddressDTO;
-import net.wowdev.microservice.ecommerce.entity.Address;
+import net.wowdev.microservice.ecommerce.entity.AddressEntity;
 
 public final class AddressMapper {
-    private AddressMapper() {
-    }
 
-    public static Address toEntity(AddressDTO dto) {
+    public static AddressEntity toEntity(AddressDTO dto) {
         if (dto == null) {
             return null;
         }
-        return new Address(
+        return new AddressEntity(
                 dto.getId(),
                 dto.getAddressLine1(),
                 dto.getAddressLine2(),
@@ -23,20 +21,19 @@ public final class AddressMapper {
                 dto.getModifiedAt());
     }
 
-    public static AddressDTO toDto(Address entity) {
+    public static AddressDTO toDto(AddressEntity entity) {
         if (entity == null) {
             return null;
         }
-        return AddressDTO.newBuilder()
-                .setId(entity.getId())
-                .setAddressLine1(entity.getAddressLine1())
-                .setAddressLine2(entity.getAddressLine2())
-                .setCity(entity.getCity())
-                .setStateProvince(entity.getStateProvince())
-                .setPostalCode(entity.getPostalCode())
-                .setCountry(entity.getCountry())
-                .setCreatedAt(entity.getCreatedAt())
-                .setModifiedAt(entity.getModifiedAt())
-                .build();
+        return new AddressDTO(
+                entity.getId(),
+                entity.getAddressLine1(),
+                entity.getAddressLine2(),
+                entity.getCity(),
+                entity.getStateProvince(),
+                entity.getPostalCode(),
+                entity.getCountry(),
+                entity.getCreatedAt(),
+                entity.getModifiedAt());
     }
 }
