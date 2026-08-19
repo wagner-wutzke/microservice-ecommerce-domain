@@ -14,7 +14,7 @@ and centralizing it, so that other projects can use it as dependency.
 
 ## JPA Entity classes generation
 
-- Create a Jakarta JPA Entity class for each generated domain object class in `net.wowdev.microservice.ecommerce.dto`.
+- Create a Jakarta JPA Entity class for each generated domain object class in `net.wowdev.ecommerce.domain.dto`.
 - Add the proper Jakarta annotations for each column / field in the classes.
 - Add the audit annotations to fields `createdAt` and `modifiedAt` to all entity classes, along with the
   `@EntityListeners(AuditingEntityListener.class)` annotation.
@@ -24,14 +24,14 @@ and centralizing it, so that other projects can use it as dependency.
 
 ## Entity / DTO Mapper classes generation
 
-- Create a Mapper class for each generated domain object class in `net.wowdev.microservice.ecommerce.dto`.
+- Create a Mapper class for each generated domain object class in `net.wowdev.ecommerce.domain.dto`.
 - Keep generated Avro types out of controller and repository APIs.
 - The Mapper classes shall convert objects from Avro/DTO format into JPA Entitiy and from JPA Entity into Avro/DTO
   object.
 - Always use the Avro-generated `.newBuilder()...build()` pattern when instantiating objects.
 - Every single assignment following a builder method must be placed on its own individual line.
 - Every single argument inside the constructor must be placed on its own individual line.
-- Put the Mapper classes in the `net.wowdev.microservice.ecommerce.mapper` package.
+- Put the Mapper classes in the `net.wowdev.ecommerce.domain.mapper` package.
 
 # General Rules
 
