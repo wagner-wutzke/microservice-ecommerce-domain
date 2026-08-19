@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.wowdev.microservice.ecommerce</groupId>
+    <groupId>net.wowdev.ecommerce</groupId>
     <artifactId>domain</artifactId>
     <version>1.0.0</version>
 
@@ -132,7 +132,7 @@
                                 <rule>
                                     <element>CLASS</element>
                                     <includes>
-                                        <include>net.wowdev.microservice.ecommerce.mapper.*</include>
+                                        <include>net.wowdev.ecommerce.domain.mapper.*</include>
                                     </includes>
                                     <limits>
                                         <limit>
