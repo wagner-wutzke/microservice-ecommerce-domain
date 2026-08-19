@@ -11,6 +11,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class InventoryDTO {
     private UUID id;
     private ProductDTO product;

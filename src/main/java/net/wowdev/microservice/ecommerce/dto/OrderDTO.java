@@ -13,6 +13,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class OrderDTO {
     private UUID id;
     private CustomerDTO customer;

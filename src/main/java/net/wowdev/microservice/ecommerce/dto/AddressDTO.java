@@ -10,6 +10,7 @@ import java.util.UUID;
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class AddressDTO {
     private UUID id;
     private String addressLine1;
