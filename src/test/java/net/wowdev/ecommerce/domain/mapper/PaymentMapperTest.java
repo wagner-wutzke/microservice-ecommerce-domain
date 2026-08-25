@@ -2,8 +2,8 @@ package net.wowdev.ecommerce.domain.mapper;
 
 import net.wowdev.ecommerce.domain.dto.PaymentDTO;
 import net.wowdev.ecommerce.domain.entity.PaymentEntity;
-import net.wowdev.ecommerce.domain.entity.PaymentMethod;
-import net.wowdev.ecommerce.domain.entity.PaymentStatus;
+import net.wowdev.ecommerce.domain.enums.PaymentMethod;
+import net.wowdev.ecommerce.domain.enums.PaymentStatus;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -22,10 +22,11 @@ class PaymentMapperTest {
         PaymentDTO dto = new PaymentDTO(
                 ID,
                 "tx-1",
+                "token-1",
+                PaymentStatus.COMPLETED,
                 new BigDecimal("25.00"),
                 "BRL",
                 PaymentMethod.PIX,
-                PaymentStatus.COMPLETED,
                 NOW,
                 NOW);
 
@@ -36,7 +37,7 @@ class PaymentMapperTest {
         PaymentDTO mappedDto = PaymentMapper.toDto(entity);
         assertEquals(dto.getTransactionId(), mappedDto.getTransactionId());
         assertEquals(dto.getPaymentMethod(), mappedDto.getPaymentMethod());
-        assertEquals(dto.getStatus(), mappedDto.getStatus());
+        assertEquals(dto.getPaymentStatus(), mappedDto.getPaymentStatus());
         assertNull(entity.getCreatedAt());
         assertNull(entity.getModifiedAt());
     }

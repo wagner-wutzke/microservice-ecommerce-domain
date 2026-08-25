@@ -1,8 +1,8 @@
 package net.wowdev.ecommerce.domain.dto;
 
 import lombok.*;
-import net.wowdev.ecommerce.domain.entity.PaymentMethod;
-import net.wowdev.ecommerce.domain.entity.PaymentStatus;
+import net.wowdev.ecommerce.domain.enums.PaymentMethod;
+import net.wowdev.ecommerce.domain.enums.PaymentStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -17,10 +17,11 @@ import java.util.UUID;
 public class PaymentDTO {
     private UUID id;
     private String transactionId;
+    private String paymentToken;
+    private PaymentStatus paymentStatus;
     private BigDecimal amount;
     private String currency;
     private PaymentMethod paymentMethod;
-    private PaymentStatus status;
     private Instant createdAt;
     private Instant modifiedAt;
 }

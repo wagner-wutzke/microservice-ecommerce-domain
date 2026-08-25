@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import net.wowdev.ecommerce.domain.enums.PaymentMethod;
+import net.wowdev.ecommerce.domain.enums.PaymentStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -28,6 +30,9 @@ public class PaymentEntity {
     @Column(name = "transaction_id", nullable = false, unique = true)
     private String transactionId;
 
+    @Column(name = "payment_token", nullable = false, unique = true)
+    private String paymentToken;
+
     @Column(name = "amount", nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
 
@@ -39,8 +44,8 @@ public class PaymentEntity {
     private PaymentMethod paymentMethod;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private PaymentStatus status;
+    @Column(name = "payment_status", nullable = false)
+    private PaymentStatus paymentStatus;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

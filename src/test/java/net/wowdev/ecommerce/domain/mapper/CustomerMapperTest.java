@@ -3,7 +3,7 @@ package net.wowdev.ecommerce.domain.mapper;
 import net.wowdev.ecommerce.domain.dto.AddressDTO;
 import net.wowdev.ecommerce.domain.dto.CustomerDTO;
 import net.wowdev.ecommerce.domain.entity.CustomerEntity;
-import net.wowdev.ecommerce.domain.entity.CustomerStatus;
+import net.wowdev.ecommerce.domain.enums.CustomerStatus;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;

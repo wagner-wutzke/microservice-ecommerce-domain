@@ -7,9 +7,7 @@ import java.util.UUID;
 
 @Getter
 @AllArgsConstructor
-public class InventoryRaisedEvent extends DomainEvent {
-
+public class InventoryIncreasedEvent extends DomainEvent {
     private UUID productId;
-    private UUID orderId;
     private int quantity;
 }

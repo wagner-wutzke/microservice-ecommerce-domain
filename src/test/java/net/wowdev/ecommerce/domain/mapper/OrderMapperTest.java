@@ -7,7 +7,7 @@ import net.wowdev.ecommerce.domain.dto.ProductDTO;
 import net.wowdev.ecommerce.domain.entity.AddressEntity;
 import net.wowdev.ecommerce.domain.entity.OrderEntity;
 import net.wowdev.ecommerce.domain.entity.OrderLineEntity;
-import net.wowdev.ecommerce.domain.entity.OrderStatus;
+import net.wowdev.ecommerce.domain.enums.OrderStatus;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

@@ -3,9 +3,9 @@ package net.wowdev.ecommerce.domain.mapper;
 import net.wowdev.ecommerce.domain.dto.InventoryDTO;
 import net.wowdev.ecommerce.domain.dto.OrderDTO;
 import net.wowdev.ecommerce.domain.dto.ProductDTO;
-import net.wowdev.ecommerce.domain.entity.InventoryChangeType;
+import net.wowdev.ecommerce.domain.enums.InventoryChangeType;
 import net.wowdev.ecommerce.domain.entity.InventoryEntity;
-import net.wowdev.ecommerce.domain.entity.OrderStatus;
+import net.wowdev.ecommerce.domain.enums.OrderStatus;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

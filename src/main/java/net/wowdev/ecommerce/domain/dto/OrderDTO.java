@@ -1,7 +1,7 @@
 package net.wowdev.ecommerce.domain.dto;
 
 import lombok.*;
-import net.wowdev.ecommerce.domain.entity.OrderStatus;
+import net.wowdev.ecommerce.domain.enums.OrderStatus;
 
 import java.math.BigDecimal;
 import java.time.Instant;

@@ -1,7 +1,7 @@
 package net.wowdev.ecommerce.domain.dto;
 
 import lombok.*;
-import net.wowdev.ecommerce.domain.entity.InventoryChangeType;
+import net.wowdev.ecommerce.domain.enums.InventoryChangeType;
 
 import java.time.Instant;
 import java.util.UUID;

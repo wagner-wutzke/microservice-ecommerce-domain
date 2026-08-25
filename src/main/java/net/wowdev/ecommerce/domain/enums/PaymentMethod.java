@@ -1,4 +1,4 @@
-package net.wowdev.ecommerce.domain.entity;
+package net.wowdev.ecommerce.domain.enums;
 
 public enum PaymentMethod {
     CREDIT_CARD,

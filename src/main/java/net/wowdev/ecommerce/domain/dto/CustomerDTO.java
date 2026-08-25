@@ -1,7 +1,7 @@
 package net.wowdev.ecommerce.domain.dto;
 
 import lombok.*;
-import net.wowdev.ecommerce.domain.entity.CustomerStatus;
+import net.wowdev.ecommerce.domain.enums.CustomerStatus;
 
 import java.time.Instant;
 import java.time.LocalDate;

@@ -12,10 +12,11 @@ public final class PaymentMapper {
         return new PaymentEntity(
                 dto.getId(),
                 dto.getTransactionId(),
+                dto.getPaymentToken(),
                 dto.getAmount(),
                 dto.getCurrency(),
                 dto.getPaymentMethod(),
-                dto.getStatus(),
+                dto.getPaymentStatus(),
                 null,
                 null);
     }
@@ -27,10 +28,11 @@ public final class PaymentMapper {
         return new PaymentDTO(
                 entity.getId(),
                 entity.getTransactionId(),
+                entity.getPaymentToken(),
+                entity.getPaymentStatus(),
                 entity.getAmount(),
                 entity.getCurrency(),
                 entity.getPaymentMethod(),
-                entity.getStatus(),
                 entity.getCreatedAt(),
                 entity.getModifiedAt());
     }
