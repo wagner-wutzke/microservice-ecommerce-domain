@@ -24,6 +24,9 @@ public class AddressEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
+    @Column(name = "customer_id", nullable = false)
+    private UUID customerId;
+
     @Column(name = "address_line_1", nullable = false)
     private String addressLine1;
 

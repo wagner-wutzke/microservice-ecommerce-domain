@@ -13,6 +13,7 @@ import java.util.UUID;
 @ToString
 public class AddressDTO {
     private UUID id;
+    private UUID customerId;
     private String addressLine1;
     private String addressLine2;
     private String city;

@@ -1,10 +1,7 @@
 package net.wowdev.ecommerce.domain.mapper;
 
-import net.wowdev.ecommerce.domain.dto.AddressDTO;
 import net.wowdev.ecommerce.domain.dto.OrderDTO;
 import net.wowdev.ecommerce.domain.dto.OrderLineDTO;
-import net.wowdev.ecommerce.domain.dto.ProductDTO;
-import net.wowdev.ecommerce.domain.entity.AddressEntity;
 import net.wowdev.ecommerce.domain.entity.OrderEntity;
 import net.wowdev.ecommerce.domain.entity.OrderLineEntity;
 import net.wowdev.ecommerce.domain.enums.OrderStatus;
@@ -17,48 +14,29 @@ import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class OrderMapperTest {
     private static final UUID ID = UUID.randomUUID();
     private static final Instant NOW = Instant.parse("2026-01-01T00:00:00Z");
-    private static final AddressDTO ADDRESS = new AddressDTO(
-            ID,
-            "One",
-            "Two",
-            "City",
-            "State",
-            "123",
-            "BR",
-            NOW,
-            NOW);
-    private static final ProductDTO PRODUCT = new ProductDTO(
-            ID,
-            "Book",
-            "A book",
-            12.5,
-            "BRL",
-            "Books",
-            NOW,
-            NOW);
 
     @Test
     void mapsOrderAndLinesBothWaysAndRestoresBackReference() {
         OrderLineDTO line = new OrderLineDTO(
                 ID,
-                PRODUCT,
-                null,
+                ID,
+                ID,
                 2,
                 new BigDecimal("12.50"),
-                new BigDecimal("25.00"),
                 NOW,
                 NOW);
         OrderDTO dto = new OrderDTO(
                 ID,
                 null,
                 OrderStatus.CONFIRMED,
-                ADDRESS,
-                ADDRESS,
+                ID,
+                ID,
                 new BigDecimal("25.00"),
                 new BigDecimal("25.00"),
                 BigDecimal.ZERO,
@@ -72,7 +50,8 @@ class OrderMapperTest {
         OrderEntity entity = OrderMapper.toEntity(dto);
 
         assertEquals(1, entity.getOrderLines().size());
-        assertSame(entity, entity.getOrderLines().getFirst().getOrder());
+        assertEquals(ID, entity.getOrderLines().getFirst().getProductId());
+        assertEquals(ID, entity.getOrderLines().getFirst().getOrderId());
         OrderDTO mappedDto = OrderMapper.toDto(entity);
         assertEquals(dto.getOrderNumber(), mappedDto.getOrderNumber());
         assertEquals(List.of(line), mappedDto.getItems());
@@ -84,15 +63,15 @@ class OrderMapperTest {
                 ID,
                 null,
                 OrderStatus.CONFIRMED,
-                new AddressEntity(ID, "One", "Two", "City", "State", "123", "BR", NOW, NOW),
-                new AddressEntity(ID, "One", "Two", "City", "State", "123", "BR", NOW, NOW),
+                ID,
+                ID,
                 new BigDecimal("25.00"),
                 new BigDecimal("25.00"),
                 BigDecimal.ZERO,
                 new BigDecimal("25.00"),
                 BigDecimal.ZERO,
                 "ORD-2",
-                Collections.singletonList((OrderLineEntity) null),
+                Collections.singletonList(null),
                 NOW,
                 NOW);
 

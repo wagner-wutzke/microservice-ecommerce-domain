@@ -1,16 +1,11 @@
 package net.wowdev.ecommerce.domain.mapper;
 
 import net.wowdev.ecommerce.domain.dto.InventoryDTO;
-import net.wowdev.ecommerce.domain.dto.OrderDTO;
-import net.wowdev.ecommerce.domain.dto.ProductDTO;
-import net.wowdev.ecommerce.domain.enums.InventoryChangeType;
 import net.wowdev.ecommerce.domain.entity.InventoryEntity;
-import net.wowdev.ecommerce.domain.enums.OrderStatus;
+import net.wowdev.ecommerce.domain.enums.InventoryChangeType;
 import org.junit.jupiter.api.Test;
 
-import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,29 +17,24 @@ class InventoryMapperTest {
 
     @Test
     void mapsInventoryBothWays() {
-        ProductDTO product = new ProductDTO(ID, "Book", "A book", 12.5, "BRL", "Books", NOW, NOW);
-        OrderDTO order = new OrderDTO(
-                ID,
-                null,
-                OrderStatus.CONFIRMED,
-                null,
-                null,
-                new BigDecimal("25.00"),
-                new BigDecimal("25.00"),
-                BigDecimal.ZERO,
-                new BigDecimal("25.00"),
-                BigDecimal.ZERO,
-                "ORD-1",
-                List.of(),
-                NOW,
-                NOW);
         InventoryDTO dto = new InventoryDTO(
-                ID, product, order, 10, 2, InventoryChangeType.INVENTORY_INCREASE, NOW, NOW);
+                ID, ID, ID, 10, 2, 8, InventoryChangeType.INVENTORY_INCREASE, NOW, NOW);
 
         InventoryEntity entity = InventoryMapper.toEntity(dto);
 
-        assertEquals(10, entity.getQuantity());
+        assertEquals(10, entity.getCurrentQuantity());
+        assertEquals(2, entity.getChangedQuantity());
+        assertEquals(8, entity.getPreviousQuantity());
         assertEquals(InventoryChangeType.INVENTORY_INCREASE, InventoryMapper.toDto(entity).getChangeType());
+        InventoryDTO mappedDto = InventoryMapper.toDto(entity);
+        assertEquals(dto.getId(), mappedDto.getId());
+        assertEquals(dto.getProductId(), mappedDto.getProductId());
+        assertEquals(dto.getOrderId(), mappedDto.getOrderId());
+        assertEquals(dto.getCurrentQuantity(), mappedDto.getCurrentQuantity());
+        assertEquals(dto.getChangedQuantity(), mappedDto.getChangedQuantity());
+        assertEquals(dto.getPreviousQuantity(), mappedDto.getPreviousQuantity());
+        assertEquals(dto.getCreatedAt(), mappedDto.getCreatedAt());
+        assertNull(mappedDto.getModifiedAt());
         assertNull(entity.getModifiedAt());
     }
 

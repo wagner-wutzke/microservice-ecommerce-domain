@@ -1,13 +1,11 @@
 package net.wowdev.ecommerce.domain.mapper;
 
-import net.wowdev.ecommerce.domain.dto.OrderDTO;
 import net.wowdev.ecommerce.domain.dto.ShippingDTO;
 import net.wowdev.ecommerce.domain.entity.ShippingEntity;
 import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,10 +17,8 @@ class ShippingMapperTest {
 
     @Test
     void mapsShippingBothWays() {
-        OrderDTO order = new OrderDTO(null, null, null, null, null, null, null, null, null,
-                null, null, List.of(), NOW, NOW);
         ShippingDTO dto = new ShippingDTO(
-                ID, order, DeliveryStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
+                ID, ID, ID, ID, DeliveryStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
 
         ShippingEntity entity = ShippingMapper.toEntity(dto);
 
@@ -31,7 +27,9 @@ class ShippingMapperTest {
         assertEquals(dto.getTrackingNumber(), entity.getTrackingNumber());
         assertEquals(dto.getCarrier(), entity.getCarrier());
         assertEquals(dto.getTrackingUrl(), entity.getTrackingUrl());
-        assertEquals(0, entity.getOrderEntity().getOrderLines().size());
+        assertEquals(ID, entity.getOrderId());
+        assertEquals(ID, entity.getCustomerId());
+        assertEquals(ID, entity.getShippingAddressId());
         assertNull(entity.getCreatedAt());
         assertNull(entity.getModifiedAt());
 
@@ -42,7 +40,16 @@ class ShippingMapperTest {
         assertEquals(dto.getTrackingNumber(), mappedDto.getTrackingNumber());
         assertEquals(dto.getCarrier(), mappedDto.getCarrier());
         assertEquals(dto.getTrackingUrl(), mappedDto.getTrackingUrl());
-        assertEquals(dto.getOrder().getItems(), mappedDto.getOrder().getItems());
+        assertEquals(dto.getId(), mappedDto.getId());
+        assertEquals(dto.getOrderId(), mappedDto.getOrderId());
+        assertEquals(dto.getCustomerId(), mappedDto.getCustomerId());
+        assertEquals(dto.getShippingAddressId(), mappedDto.getShippingAddressId());
+        assertEquals(dto.getShippingStatus(), mappedDto.getShippingStatus());
+        assertEquals(dto.getTrackingNumber(), mappedDto.getTrackingNumber());
+        assertEquals(dto.getCarrier(), mappedDto.getCarrier());
+        assertEquals(dto.getTrackingUrl(), mappedDto.getTrackingUrl());
+        assertNull(mappedDto.getCreatedAt());
+        assertNull(mappedDto.getModifiedAt());
     }
 
     @Test

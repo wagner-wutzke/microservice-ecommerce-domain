@@ -16,11 +16,12 @@ import java.util.UUID;
 @ToString
 public class PaymentDTO {
     private UUID id;
+    private UUID orderId;
+    private UUID customerId;
     private String transactionId;
     private String paymentToken;
     private PaymentStatus paymentStatus;
     private BigDecimal amount;
-    private String currency;
     private PaymentMethod paymentMethod;
     private Instant createdAt;
     private Instant modifiedAt;

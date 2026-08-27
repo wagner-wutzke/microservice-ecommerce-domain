@@ -22,22 +22,24 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class InventoryEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private ProductEntity productEntity;
+    @Column(name = "product_id", nullable = false)
+    private UUID productId;
 
-    @ManyToOne
     @JoinColumn(name = "order_id")
-    private OrderEntity orderEntity;
+    private UUID orderId;
 
-    @Column(name = "quantity", nullable = false)
-    private int quantity;
+    @Column(name = "current_quantity", nullable = false)
+    private int currentQuantity;
 
     @Column(name = "changed_quantity", nullable = false)
     private int changedQuantity;
+
+    @Column(name = "previous_quantity", nullable = false)
+    private int previousQuantity;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "change_type", nullable = false)

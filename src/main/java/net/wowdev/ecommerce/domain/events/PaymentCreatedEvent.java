@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import net.wowdev.ecommerce.domain.dto.PaymentDTO;
 
+import java.util.UUID;
+
 
 @AllArgsConstructor
 @Getter

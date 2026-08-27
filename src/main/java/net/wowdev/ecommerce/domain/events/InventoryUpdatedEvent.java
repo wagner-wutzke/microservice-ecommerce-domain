@@ -6,10 +6,9 @@ import lombok.Getter;
 import java.time.Instant;
 import java.util.UUID;
 
-public record InventoryFailedEvent(
+public record InventoryUpdatedEvent (
+        UUID eventId,
         UUID orderId,
         UUID productId,
         int quantity,
-        String reason,
-        Instant createdAt
-) {}
+        Instant createdAt) { }

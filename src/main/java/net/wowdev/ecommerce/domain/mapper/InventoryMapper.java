@@ -11,10 +11,11 @@ public final class InventoryMapper {
         }
         return new InventoryEntity(
                 dto.getId(),
-                ProductMapper.toEntity(dto.getProduct()),
-                OrderMapper.toEntity(dto.getOrder()),
-                dto.getQuantity(),
+                dto.getProductId(),
+                dto.getOrderId(),
+                dto.getCurrentQuantity(),
                 dto.getChangedQuantity(),
+                dto.getPreviousQuantity(),
                 dto.getChangeType(),
                 dto.getCreatedAt(),
                 null);
@@ -26,10 +27,11 @@ public final class InventoryMapper {
         }
         return new InventoryDTO(
                 entity.getId(),
-                ProductMapper.toDto(entity.getProductEntity()),
-                OrderMapper.toDto(entity.getOrderEntity()),
-                entity.getQuantity(),
+                entity.getProductId(),
+                entity.getOrderId(),
+                entity.getCurrentQuantity(),
                 entity.getChangedQuantity(),
+                entity.getPreviousQuantity(),
                 entity.getChangeType(),
                 entity.getCreatedAt(),
                 entity.getModifiedAt());

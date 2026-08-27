@@ -14,10 +14,9 @@ public final class CustomerMapper {
                 dto.getFirstName(),
                 dto.getLastName(),
                 dto.getEmail(),
-                dto.getDateOfBirth(),
                 dto.getStatus(),
-                AddressMapper.toEntity(dto.getBillingAddress()),
-                AddressMapper.toEntity(dto.getShippingAddress()),
+                dto.getBillingAddressId(),
+                dto.getShippingAddressId(),
                 dto.getCreatedAt(),
                 dto.getModifiedAt());
     }
@@ -31,10 +30,9 @@ public final class CustomerMapper {
                 entity.getFirstName(),
                 entity.getLastName(),
                 entity.getEmail(),
-                entity.getDateOfBirth(),
                 entity.getStatus(),
-                AddressMapper.toDto(entity.getBillingAddressEntity()),
-                AddressMapper.toDto(entity.getShippingAddressEntity()),
+                entity.getBillingAddressId(),
+                entity.getShippingAddressId(),
                 entity.getCreatedAt(),
                 entity.getModifiedAt());
     }

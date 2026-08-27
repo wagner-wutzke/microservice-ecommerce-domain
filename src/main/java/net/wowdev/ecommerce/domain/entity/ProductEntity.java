@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class ProductEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
@@ -30,11 +32,8 @@ public class ProductEntity {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @Column(name = "unit_price", nullable = false)
-    private double unitPrice;
-
-    @Column(name = "currency", nullable = false, length = 3)
-    private String currency;
+    @Column(name = "unit_price", nullable = false, precision = 19, scale = 2)
+    private BigDecimal unitPrice;
 
     @Column(name = "category", nullable = false)
     private String category;

@@ -21,11 +21,12 @@ class PaymentMapperTest {
     void mapsPaymentBothWays() {
         PaymentDTO dto = new PaymentDTO(
                 ID,
+                ID,
+                ID,
                 "tx-1",
                 "token-1",
                 PaymentStatus.COMPLETED,
                 new BigDecimal("25.00"),
-                "BRL",
                 PaymentMethod.PIX,
                 NOW,
                 NOW);
@@ -34,6 +35,8 @@ class PaymentMapperTest {
 
         assertEquals(dto.getId(), entity.getId());
         assertEquals(dto.getAmount(), entity.getAmount());
+        assertEquals(dto.getOrderId(), entity.getOrderId());
+        assertEquals(dto.getCustomerId(), entity.getCustomerId());
         PaymentDTO mappedDto = PaymentMapper.toDto(entity);
         assertEquals(dto.getTransactionId(), mappedDto.getTransactionId());
         assertEquals(dto.getPaymentMethod(), mappedDto.getPaymentMethod());

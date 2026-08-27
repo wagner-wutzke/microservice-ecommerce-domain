@@ -11,6 +11,7 @@ public final class AddressMapper {
         }
         return new AddressEntity(
                 dto.getId(),
+                dto.getCustomerId(),
                 dto.getAddressLine1(),
                 dto.getAddressLine2(),
                 dto.getCity(),
@@ -27,6 +28,7 @@ public final class AddressMapper {
         }
         return new AddressDTO(
                 entity.getId(),
+                entity.getCustomerId(),
                 entity.getAddressLine1(),
                 entity.getAddressLine2(),
                 entity.getCity(),

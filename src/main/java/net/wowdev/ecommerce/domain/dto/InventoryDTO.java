@@ -14,10 +14,11 @@ import java.util.UUID;
 @ToString
 public class InventoryDTO {
     private UUID id;
-    private ProductDTO product;
-    private OrderDTO order;
-    private int quantity;
+    private UUID productId;
+    private UUID orderId;
+    private int currentQuantity;
     private int changedQuantity;
+    private int previousQuantity;
     private InventoryChangeType changeType;
     private Instant createdAt;
     private Instant modifiedAt;

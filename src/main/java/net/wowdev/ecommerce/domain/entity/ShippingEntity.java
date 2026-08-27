@@ -1,14 +1,6 @@
 package net.wowdev.ecommerce.domain.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,12 +22,18 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class ShippingEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @OneToOne
-    @JoinColumn(name = "order_id", nullable = false, unique = true)
-    private OrderEntity orderEntity;
+    @Column(name = "order_id", nullable = false)
+    private UUID orderId;
+
+    @Column(name = "customer_id", nullable = false)
+    private UUID customerId;
+
+    @Column(name = "shipping_address_id", nullable = false)
+    private UUID shippingAddressId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "shipping_status", nullable = false)

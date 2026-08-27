@@ -4,7 +4,6 @@ import lombok.*;
 import net.wowdev.ecommerce.domain.enums.CustomerStatus;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
@@ -18,10 +17,9 @@ public class CustomerDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private LocalDate dateOfBirth;
     private CustomerStatus status;
-    private AddressDTO billingAddress;
-    private AddressDTO shippingAddress;
+    private UUID billingAddressId;
+    private UUID shippingAddressId;
     private Instant createdAt;
     private Instant modifiedAt;
 }

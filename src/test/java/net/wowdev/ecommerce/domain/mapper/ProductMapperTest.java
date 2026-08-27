@@ -4,6 +4,7 @@ import net.wowdev.ecommerce.domain.dto.ProductDTO;
 import net.wowdev.ecommerce.domain.entity.ProductEntity;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -16,7 +17,8 @@ class ProductMapperTest {
 
     @Test
     void mapsProductBothWays() {
-        ProductDTO dto = new ProductDTO(ID, "Book", "A book", 12.5, "BRL", "Books", NOW, NOW);
+        ProductDTO dto = new ProductDTO(ID, "Book", "A book", BigDecimal.valueOf(12.5),
+                "Books", NOW, NOW);
 
         ProductEntity entity = ProductMapper.toEntity(dto);
 

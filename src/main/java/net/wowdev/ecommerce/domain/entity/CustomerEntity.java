@@ -11,7 +11,6 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
@@ -23,6 +22,7 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class CustomerEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
@@ -35,20 +35,15 @@ public class CustomerEntity {
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "date_of_birth")
-    private LocalDate dateOfBirth;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private CustomerStatus status;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "billing_address_id", nullable = false)
-    private AddressEntity billingAddressEntity;
+    @Column(name = "billing_address_id", nullable = false)
+    private UUID billingAddressId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shipping_address_id", nullable = false)
-    private AddressEntity shippingAddressEntity;
+    @Column(name = "shipping_address_id", nullable = false)
+    private UUID shippingAddressId;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

@@ -22,25 +22,21 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class OrderLineEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
-    private ProductEntity product;
+    @Column(name = "product_id", nullable = false)
+    private UUID productId;
 
-    @ManyToOne
-    @JoinColumn(name = "order_id", nullable = false)
-    private OrderEntity order;
+    @Column(name = "order_id", nullable = false)
+    private UUID orderId;
 
     @Column(name = "quantity", nullable = false)
     private int quantity;
 
     @Column(name = "price", nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
-
-    @Column(name = "line_amount", nullable = false, precision = 19, scale = 2)
-    private BigDecimal lineAmount;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

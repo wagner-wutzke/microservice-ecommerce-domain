@@ -16,15 +16,15 @@ public final class OrderMapper {
         }
         OrderEntity orderEntity = new OrderEntity(
                 dto.getId(),
-                CustomerMapper.toEntity(dto.getCustomer()),
+                dto.getCustomerId(),
                 dto.getStatus(),
-                AddressMapper.toEntity(dto.getShippingAddress()),
-                AddressMapper.toEntity(dto.getBillingAddress()),
+                dto.getShippingAddressId(),
+                dto.getBillingAddressId(),
                 dto.getTotalAmount(),
-                dto.getSumAmount(),
                 dto.getShippingAmount(),
-                dto.getNetAmount(),
                 dto.getTaxAmount(),
+                dto.getDiscountAmount(),
+                dto.getOrderAmount(),
                 dto.getOrderNumber(),
                 new java.util.ArrayList<>(),
                 dto.getCreatedAt(),
@@ -33,7 +33,7 @@ public final class OrderMapper {
                 .filter(Objects::nonNull)
                 .map(OrderLineMapper::toEntity)
                 .toList();
-        lines.forEach(line -> line.setOrder(orderEntity));
+        lines.forEach(line -> line.setOrderId(orderEntity.getId()));
         orderEntity.setOrderLines(new java.util.ArrayList<>(lines));
         return orderEntity;
     }
@@ -48,15 +48,15 @@ public final class OrderMapper {
                 .toList();
         return new OrderDTO(
                 entity.getId(),
-                CustomerMapper.toDto(entity.getCustomer()),
+                entity.getCustomerId(),
                 entity.getStatus(),
-                AddressMapper.toDto(entity.getShippingAddressEntity()),
-                AddressMapper.toDto(entity.getBillingAddressEntity()),
+                entity.getShippingAddressId(),
+                entity.getBillingAddressId(),
                 entity.getTotalAmount(),
-                entity.getSumAmount(),
                 entity.getShippingAmount(),
-                entity.getNetAmount(),
                 entity.getTaxAmount(),
+                entity.getDiscountAmount(),
+                entity.getOrderAmount(),
                 entity.getOrderNumber(),
                 items,
                 entity.getCreatedAt(),

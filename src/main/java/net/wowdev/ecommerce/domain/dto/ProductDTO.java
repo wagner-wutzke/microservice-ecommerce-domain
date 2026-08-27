@@ -2,6 +2,7 @@ package net.wowdev.ecommerce.domain.dto;
 
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -15,8 +16,7 @@ public class ProductDTO {
     private UUID id;
     private String name;
     private String description;
-    private double unitPrice;
-    private String currency;
+    private BigDecimal unitPrice;
     private String category;
     private Instant createdAt;
     private Instant modifiedAt;

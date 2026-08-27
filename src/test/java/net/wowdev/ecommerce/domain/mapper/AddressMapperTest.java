@@ -17,11 +17,12 @@ class AddressMapperTest {
     @Test
     void mapsAddressBothWays() {
         AddressDTO dto = new AddressDTO(
-                ID, "One", "Two", "City", "State", "123", "BR", NOW, NOW);
+                ID, ID, "One", "Two", "City", "State", "123", "BR", NOW, NOW);
 
         AddressEntity entity = AddressMapper.toEntity(dto);
 
         assertEquals(dto, AddressMapper.toDto(entity));
+        assertEquals(ID, entity.getCustomerId());
     }
 
     @Test

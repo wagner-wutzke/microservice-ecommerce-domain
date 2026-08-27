@@ -14,7 +14,6 @@ public final class ProductMapper {
                 dto.getName(),
                 dto.getDescription(),
                 dto.getUnitPrice(),
-                dto.getCurrency(),
                 dto.getCategory(),
                 dto.getCreatedAt(),
                 dto.getModifiedAt());
@@ -29,7 +28,6 @@ public final class ProductMapper {
                 entity.getName(),
                 entity.getDescription(),
                 entity.getUnitPrice(),
-                entity.getCurrency(),
                 entity.getCategory(),
                 entity.getCreatedAt(),
                 entity.getModifiedAt());

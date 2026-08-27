@@ -1,7 +1,6 @@
 package net.wowdev.ecommerce.domain.mapper;
 
 import net.wowdev.ecommerce.domain.dto.OrderLineDTO;
-import net.wowdev.ecommerce.domain.dto.ProductDTO;
 import net.wowdev.ecommerce.domain.entity.OrderLineEntity;
 import org.junit.jupiter.api.Test;
 
@@ -17,30 +16,26 @@ class OrderLineMapperTest {
     private static final Instant NOW = Instant.parse("2026-01-01T00:00:00Z");
 
     @Test
+    void canInstantiateMapper() {
+        assertEquals(OrderLineMapper.class, new OrderLineMapper().getClass());
+    }
+
+    @Test
     void mapsOrderLineAndDoesNotMapOrderBackReference() {
-        ProductDTO product = new ProductDTO(
-                ID,
-                "Book",
-                "A book",
-                12.5,
-                "BRL",
-                "Books",
-                NOW,
-                NOW);
         OrderLineDTO dto = new OrderLineDTO(
                 ID,
-                product,
-                null,
+                ID,
+                ID,
                 2,
                 new BigDecimal("12.50"),
-                new BigDecimal("25.00"),
                 NOW,
                 NOW);
 
         OrderLineEntity entity = OrderLineMapper.toEntity(dto);
 
         assertEquals(dto, OrderLineMapper.toDto(entity));
-        assertNull(entity.getOrder());
+        assertEquals(ID, entity.getProductId());
+        assertEquals(ID, entity.getOrderId());
     }
 
     @Test

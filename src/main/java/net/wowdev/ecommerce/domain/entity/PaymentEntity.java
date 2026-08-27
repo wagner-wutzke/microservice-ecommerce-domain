@@ -24,8 +24,15 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class PaymentEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
+
+    @Column(name = "order_id", nullable = false)
+    private UUID orderId;
+
+    @Column(name = "customer_id", nullable = false)
+    private UUID customerId;
 
     @Column(name = "transaction_id", nullable = false, unique = true)
     private String transactionId;
@@ -35,9 +42,6 @@ public class PaymentEntity {
 
     @Column(name = "amount", nullable = false, precision = 19, scale = 2)
     private BigDecimal amount;
-
-    @Column(name = "currency", nullable = false, length = 3)
-    private String currency;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_method", nullable = false)

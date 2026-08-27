@@ -14,11 +14,10 @@ import java.util.UUID;
 @ToString
 public class OrderLineDTO {
     private UUID id;
-    private ProductDTO product;
-    private OrderDTO order;
+    private UUID orderId;
+    private UUID productId;
     private int quantity;
     private BigDecimal price;
-    private BigDecimal lineAmount;
     private Instant createdAt;
     private Instant modifiedAt;
 }
