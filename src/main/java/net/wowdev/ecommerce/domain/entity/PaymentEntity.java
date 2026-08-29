@@ -1,10 +1,7 @@
 package net.wowdev.ecommerce.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import net.wowdev.ecommerce.domain.enums.PaymentMethod;
 import net.wowdev.ecommerce.domain.enums.PaymentStatus;
 import org.springframework.data.annotation.CreatedDate;
@@ -19,6 +16,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity
 @Table(name = "payments")
 @EntityListeners(AuditingEntityListener.class)

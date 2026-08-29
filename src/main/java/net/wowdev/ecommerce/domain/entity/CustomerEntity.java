@@ -1,13 +1,11 @@
 package net.wowdev.ecommerce.domain.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import net.wowdev.ecommerce.domain.enums.CustomerStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;
@@ -21,10 +19,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Entity
 @Table(name = "customers")
+@ToString
 @EntityListeners(AuditingEntityListener.class)
 public class CustomerEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
