@@ -1,14 +1,14 @@
 package net.wowdev.ecommerce.domain.events;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import net.wowdev.ecommerce.domain.dto.ShippingDTO;
 
+import java.time.Instant;
 import java.util.UUID;
 
-@Getter
-@AllArgsConstructor
-public class ShippingFailedEvent extends DomainEvent {
-    private ShippingDTO shippingDTO;
-    private String reason;
-}
+public record ShippingFailedEvent(
+        UUID eventId,
+        String transactionId,
+        ShippingDTO shippingDTO,
+        String reason,
+        Instant createdAt
+) {}

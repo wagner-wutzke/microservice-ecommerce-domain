@@ -18,6 +18,7 @@ public class PaymentDTO {
     private UUID id;
     private UUID orderId;
     private UUID customerId;
+    private UUID paymentMethodId;
     private String transactionId;
     private String paymentToken;
     private PaymentStatus paymentStatus;

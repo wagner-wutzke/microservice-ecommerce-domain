@@ -5,6 +5,7 @@ import net.wowdev.ecommerce.domain.dto.OrderLineDTO;
 import net.wowdev.ecommerce.domain.entity.OrderEntity;
 import net.wowdev.ecommerce.domain.entity.OrderLineEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,19 +18,18 @@ public final class OrderMapper {
         OrderEntity orderEntity = new OrderEntity(
                 dto.getId(),
                 dto.getCustomerId(),
-                dto.getStatus(),
-                dto.getShippingAddressId(),
-                dto.getBillingAddressId(),
+                dto.getPaymentMethodId(),
+                dto.getOrderStatus(),
                 dto.getTotalAmount(),
                 dto.getShippingAmount(),
                 dto.getTaxAmount(),
                 dto.getDiscountAmount(),
                 dto.getOrderAmount(),
                 dto.getOrderNumber(),
-                new java.util.ArrayList<>(),
+                new ArrayList<>(),
                 dto.getCreatedAt(),
                 dto.getModifiedAt());
-        List<OrderLineEntity> lines = dto.getItems().stream()
+        List<OrderLineEntity> lines = dto.getOrderLines().stream()
                 .filter(Objects::nonNull)
                 .map(OrderLineMapper::toEntity)
                 .toList();
@@ -42,23 +42,22 @@ public final class OrderMapper {
         if (entity == null) {
             return null;
         }
-        List<OrderLineDTO> items = entity.getOrderLines().stream()
+        List<OrderLineDTO> orderLines = entity.getOrderLines().stream()
                 .filter(Objects::nonNull)
                 .map(OrderLineMapper::toDto)
                 .toList();
         return new OrderDTO(
                 entity.getId(),
                 entity.getCustomerId(),
-                entity.getStatus(),
-                entity.getShippingAddressId(),
-                entity.getBillingAddressId(),
+                entity.getPaymentMethodId(),
+                entity.getOrderStatus(),
                 entity.getTotalAmount(),
                 entity.getShippingAmount(),
                 entity.getTaxAmount(),
                 entity.getDiscountAmount(),
                 entity.getOrderAmount(),
                 entity.getOrderNumber(),
-                items,
+                orderLines,
                 entity.getCreatedAt(),
                 entity.getModifiedAt());
     }

@@ -17,16 +17,15 @@ import java.util.UUID;
 public class OrderDTO {
     private UUID id;
     private UUID customerId;
-    private OrderStatus status;
-    private UUID shippingAddressId;
-    private UUID billingAddressId;
+    private UUID paymentMethodId;
+    private OrderStatus orderStatus;
     private BigDecimal totalAmount;
     private BigDecimal shippingAmount;
     private BigDecimal taxAmount;
     private BigDecimal discountAmount;
     private BigDecimal orderAmount;
     private String orderNumber;
-    private List<OrderLineDTO> items;
+    private List<OrderLineDTO> orderLines;
     private Instant createdAt;
     private Instant modifiedAt;
 }

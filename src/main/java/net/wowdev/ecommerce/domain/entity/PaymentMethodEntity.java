@@ -9,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -17,33 +18,31 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "addresses")
+@Table(name = "payment_methods")
 @EntityListeners(AuditingEntityListener.class)
-public class AddressEntity {
+public class PaymentMethodEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
     @Column(name = "customer_id", nullable = false)
     private UUID customerId;
 
-    @Column(name = "address_line_1", nullable = false)
-    private String addressLine1;
+    @Column(name = "card_number", nullable = false)
+    private String cardNumber;
 
-    @Column(name = "address_line_2", nullable = false)
-    private String addressLine2;
+    @Column(name = "owner_name", nullable = false)
+    private String ownerName;
 
-    @Column(name = "city", nullable = false)
-    private String city;
+    @Column(name = "expiration", nullable = false)
+    private String expiration;
 
-    @Column(name = "state_province", nullable = false)
-    private String stateProvince;
+    @Column(name = "cvv", nullable = false,  length = 3)
+    private int cvv;
 
-    @Column(name = "postal_code", nullable = false)
-    private String postalCode;
-
-    @Column(name = "country", nullable = false)
-    private String country;
+    @Column(name = "card_name", nullable = false)
+    private String cardName;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)

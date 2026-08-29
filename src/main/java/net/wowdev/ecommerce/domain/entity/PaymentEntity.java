@@ -34,6 +34,9 @@ public class PaymentEntity {
     @Column(name = "customer_id", nullable = false)
     private UUID customerId;
 
+    @Column(name = "payment_method_id", nullable = false)
+    private UUID paymentMethodId;
+
     @Column(name = "transaction_id", nullable = false, unique = true)
     private String transactionId;
 

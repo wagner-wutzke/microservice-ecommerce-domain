@@ -1,14 +1,13 @@
 package net.wowdev.ecommerce.domain.events;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import net.wowdev.ecommerce.domain.dto.PaymentDTO;
 
+import java.time.Instant;
 import java.util.UUID;
 
 
-@AllArgsConstructor
-@Getter
-public class PaymentCreatedEvent extends DomainEvent {
-    private PaymentDTO paymentDTO;
-}
+public record PaymentCreatedEvent(
+        UUID eventId,
+        String transactionId,
+        PaymentDTO paymentDTO,
+        Instant createdAt) {}

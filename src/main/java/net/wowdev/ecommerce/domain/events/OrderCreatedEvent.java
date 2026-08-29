@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public record OrderCreatedEvent(
         UUID eventId,
+        String transactionId,
         OrderDTO orderDTO,
         Instant createdAt) {
 }

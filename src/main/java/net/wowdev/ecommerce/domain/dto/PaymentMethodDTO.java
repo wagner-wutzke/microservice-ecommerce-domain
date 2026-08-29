@@ -11,15 +11,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class AddressDTO {
+public class PaymentMethodDTO {
     private UUID id;
     private UUID customerId;
-    private String addressLine1;
-    private String addressLine2;
-    private String city;
-    private String stateProvince;
-    private String postalCode;
-    private String country;
+    //TODO card data must be masked for logs or encoded
+    private String cardNumber;
+    private String ownerName;
+    private String expiration;
+    private int cvv;
+    private String cardName;
     private Instant createdAt;
     private Instant modifiedAt;
 }

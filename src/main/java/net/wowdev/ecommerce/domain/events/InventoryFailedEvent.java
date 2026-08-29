@@ -7,6 +7,8 @@ import java.time.Instant;
 import java.util.UUID;
 
 public record InventoryFailedEvent(
+        UUID eventId,
+        String transactionId,
         UUID orderId,
         UUID productId,
         int quantity,

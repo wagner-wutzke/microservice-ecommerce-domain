@@ -23,6 +23,7 @@ class PaymentMapperTest {
                 ID,
                 ID,
                 ID,
+                ID,
                 "tx-1",
                 "token-1",
                 PaymentStatus.COMPLETED,
@@ -37,6 +38,7 @@ class PaymentMapperTest {
         assertEquals(dto.getAmount(), entity.getAmount());
         assertEquals(dto.getOrderId(), entity.getOrderId());
         assertEquals(dto.getCustomerId(), entity.getCustomerId());
+        assertEquals(dto.getPaymentMethodId(), entity.getPaymentMethodId());
         PaymentDTO mappedDto = PaymentMapper.toDto(entity);
         assertEquals(dto.getTransactionId(), mappedDto.getTransactionId());
         assertEquals(dto.getPaymentMethod(), mappedDto.getPaymentMethod());

@@ -8,6 +8,7 @@ import java.util.UUID;
 
 public record InventoryUpdatedEvent (
         UUID eventId,
+        String transactionId,
         UUID orderId,
         UUID productId,
         int quantity,

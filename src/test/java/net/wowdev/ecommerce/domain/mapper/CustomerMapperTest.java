@@ -6,6 +6,7 @@ import net.wowdev.ecommerce.domain.enums.CustomerStatus;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,15 +24,22 @@ class CustomerMapperTest {
                 "Lovelace",
                 "ada@example.com",
                 CustomerStatus.ACTIVE,
-                ID,
-                ID,
+                List.of(),
+                "1 Main Street",
+                "Apt 2",
+                "City",
+                "State",
+                "11111-111",
+                "BR",
                 NOW,
                 NOW);
 
         CustomerEntity entity = CustomerMapper.toEntity(dto);
 
         assertEquals(dto, CustomerMapper.toDto(entity));
-        assertEquals(ID, entity.getBillingAddressId());
+        assertEquals(dto.getAddressLine1(), entity.getAddressLine1());
+        assertEquals(dto.getAddressLine2(), entity.getAddressLine2());
+        assertEquals(dto.getCountry(), entity.getCountry());
     }
 
     @Test

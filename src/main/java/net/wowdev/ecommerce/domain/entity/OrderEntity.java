@@ -28,41 +28,37 @@ public class OrderEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = false)
-    private CustomerEntity customer;
+    @Column(name = "customer_id", nullable = false)
+    private UUID customerId;
+
+    @Column(name = "payment_method_id")
+    private UUID paymentMethodId;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "status", nullable = false)
-    private OrderStatus status;
+    @Column(name = "order_status", nullable = false)
+    private OrderStatus orderStatus;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "shipping_address_id", nullable = false)
-    private AddressEntity shippingAddressEntity;
-
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "billing_address_id", nullable = false)
-    private AddressEntity billingAddressEntity;
-
-    @Column(name = "total_amount", nullable = false, precision = 19, scale = 2)
+    @Column(name = "total_amount", precision = 19, scale = 2)
     private BigDecimal totalAmount;
 
-    @Column(name = "sum_amount", nullable = false, precision = 19, scale = 2)
-    private BigDecimal sumAmount;
-
-    @Column(name = "shipping_amount", nullable = false, precision = 19, scale = 2)
+    @Column(name = "shipping_amount", precision = 19, scale = 2)
     private BigDecimal shippingAmount;
 
-    @Column(name = "net_amount", nullable = false, precision = 19, scale = 2)
-    private BigDecimal netAmount;
-
-    @Column(name = "tax_amount", nullable = false, precision = 19, scale = 2)
+    @Column(name = "tax_amount", precision = 19, scale = 2)
     private BigDecimal taxAmount;
 
-    @Column(name = "order_number", nullable = false, unique = true)
+    @Column(name = "discount_amount", precision = 19, scale = 2)
+    private BigDecimal discountAmount;
+
+    @Column(name = "order_amount", precision = 19, scale = 2)
+    private BigDecimal orderAmount;
+
+    // TODO: order number must be unique
+    @Column(name = "order_number", unique = false)
+    // @GeneratedOrderNumber
     private String orderNumber;
 
-    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "orderId", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderLineEntity> orderLines = new ArrayList<>();
 
     @CreatedDate

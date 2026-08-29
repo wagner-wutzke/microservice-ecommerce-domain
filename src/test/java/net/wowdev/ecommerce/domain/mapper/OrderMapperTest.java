@@ -3,7 +3,6 @@ package net.wowdev.ecommerce.domain.mapper;
 import net.wowdev.ecommerce.domain.dto.OrderDTO;
 import net.wowdev.ecommerce.domain.dto.OrderLineDTO;
 import net.wowdev.ecommerce.domain.entity.OrderEntity;
-import net.wowdev.ecommerce.domain.entity.OrderLineEntity;
 import net.wowdev.ecommerce.domain.enums.OrderStatus;
 import org.junit.jupiter.api.Test;
 
@@ -34,9 +33,8 @@ class OrderMapperTest {
         OrderDTO dto = new OrderDTO(
                 ID,
                 null,
+                ID,
                 OrderStatus.CONFIRMED,
-                ID,
-                ID,
                 new BigDecimal("25.00"),
                 new BigDecimal("25.00"),
                 BigDecimal.ZERO,
@@ -54,7 +52,7 @@ class OrderMapperTest {
         assertEquals(ID, entity.getOrderLines().getFirst().getOrderId());
         OrderDTO mappedDto = OrderMapper.toDto(entity);
         assertEquals(dto.getOrderNumber(), mappedDto.getOrderNumber());
-        assertEquals(List.of(line), mappedDto.getItems());
+        assertEquals(List.of(line), mappedDto.getOrderLines());
     }
 
     @Test
@@ -62,9 +60,8 @@ class OrderMapperTest {
         OrderEntity entity = new OrderEntity(
                 ID,
                 null,
+                ID,
                 OrderStatus.CONFIRMED,
-                ID,
-                ID,
                 new BigDecimal("25.00"),
                 new BigDecimal("25.00"),
                 BigDecimal.ZERO,
@@ -75,7 +72,7 @@ class OrderMapperTest {
                 NOW,
                 NOW);
 
-        assertEquals(List.of(), OrderMapper.toDto(entity).getItems());
+        assertEquals(List.of(), OrderMapper.toDto(entity).getOrderLines());
     }
 
     @Test
