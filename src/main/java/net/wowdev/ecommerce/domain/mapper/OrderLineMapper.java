@@ -12,6 +12,7 @@ public final class OrderLineMapper {
         }
         return new OrderLineEntity(
                 dto.getId(),
+                dto.getTransactionId(),
                 dto.getProductId(),
                 dto.getOrderId(),
                 dto.getQuantity(),
@@ -26,6 +27,7 @@ public final class OrderLineMapper {
         }
         return new OrderLineDTO(
                 entity.getId(),
+                entity.getTransactionId(),
                 entity.getOrderId(),
                 entity.getProductId(),
                 entity.getQuantity(),

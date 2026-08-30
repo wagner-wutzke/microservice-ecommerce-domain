@@ -16,6 +16,7 @@ import java.util.UUID;
 @ToString
 public class OrderDTO {
     private UUID id;
+    private String transactionId;
     private UUID customerId;
     private UUID paymentMethodId;
     private OrderStatus orderStatus;

@@ -14,9 +14,9 @@ import java.util.UUID;
 @ToString
 public class ShippingDTO {
     private UUID id;
+    private String transactionId;
     private UUID orderId;
     private UUID customerId;
-    private UUID shippingAddressId;
     private DeliveryStatus shippingStatus;
     private String trackingNumber;
     private String carrier;

@@ -5,8 +5,7 @@ import net.wowdev.ecommerce.domain.dto.PaymentDTO;
 import java.time.Instant;
 import java.util.UUID;
 
-
-public record PaymentCreatedEvent(
+public record InvoiceCreationCompletedEvent(
         UUID eventId,
         String transactionId,
         PaymentDTO paymentDTO,

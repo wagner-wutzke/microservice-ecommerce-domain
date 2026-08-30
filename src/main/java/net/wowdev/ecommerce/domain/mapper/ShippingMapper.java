@@ -14,9 +14,9 @@ public final class ShippingMapper {
         }
         return new ShippingEntity(
                 dto.getId(),
+                dto.getTransactionId(),
                 dto.getOrderId(),
                 dto.getCustomerId(),
-                dto.getShippingAddressId(),
                 dto.getShippingStatus(),
                 dto.getTrackingNumber(),
                 dto.getCarrier(),
@@ -31,9 +31,9 @@ public final class ShippingMapper {
         }
         return new ShippingDTO(
                 entity.getId(),
+                entity.getTransactionId(),
                 entity.getOrderId(),
                 entity.getCustomerId(),
-                entity.getShippingAddressId(),
                 entity.getShippingStatus(),
                 entity.getTrackingNumber(),
                 entity.getCarrier(),

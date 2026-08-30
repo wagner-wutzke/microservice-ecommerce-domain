@@ -24,14 +24,14 @@ public class ShippingEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
+    @Column(name = "transaction_id", nullable = false)
+    private String transactionId;
+
     @Column(name = "order_id", nullable = false)
     private UUID orderId;
 
     @Column(name = "customer_id", nullable = false)
     private UUID customerId;
-
-    @Column(name = "shipping_address_id", nullable = false)
-    private UUID shippingAddressId;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "shipping_status", nullable = false)

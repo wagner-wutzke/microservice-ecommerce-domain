@@ -24,6 +24,7 @@ class OrderMapperTest {
     void mapsOrderAndLinesBothWaysAndRestoresBackReference() {
         OrderLineDTO line = new OrderLineDTO(
                 ID,
+                "tx_id",
                 ID,
                 ID,
                 2,
@@ -32,6 +33,7 @@ class OrderMapperTest {
                 NOW);
         OrderDTO dto = new OrderDTO(
                 ID,
+                "tx_id",
                 null,
                 ID,
                 OrderStatus.CONFIRMED,
@@ -59,6 +61,7 @@ class OrderMapperTest {
     void mapsOrderWithNullLinesInEntity() {
         OrderEntity entity = new OrderEntity(
                 ID,
+                "tx_id",
                 null,
                 ID,
                 OrderStatus.CONFIRMED,

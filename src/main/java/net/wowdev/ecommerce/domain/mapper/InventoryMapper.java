@@ -11,6 +11,7 @@ public final class InventoryMapper {
         }
         return new InventoryEntity(
                 dto.getId(),
+                dto.getTransactionId(),
                 dto.getProductId(),
                 dto.getOrderId(),
                 dto.getCurrentQuantity(),
@@ -27,6 +28,7 @@ public final class InventoryMapper {
         }
         return new InventoryDTO(
                 entity.getId(),
+                entity.getTransactionId(),
                 entity.getProductId(),
                 entity.getOrderId(),
                 entity.getCurrentQuantity(),

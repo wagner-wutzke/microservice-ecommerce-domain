@@ -5,7 +5,6 @@ import lombok.*;
 import net.wowdev.ecommerce.domain.enums.CustomerStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.Instant;

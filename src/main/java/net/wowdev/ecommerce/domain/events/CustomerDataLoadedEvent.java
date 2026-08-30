@@ -1,13 +1,13 @@
 package net.wowdev.ecommerce.domain.events;
 
-import net.wowdev.ecommerce.domain.dto.OrderDTO;
+import net.wowdev.ecommerce.domain.dto.CustomerDTO;
 
 import java.time.Instant;
 import java.util.UUID;
 
-public record OrderCompletedEvent(
+public record CustomerDataLoadedEvent(
         UUID eventId,
         String transactionId,
-        OrderDTO orderDTO,
+        CustomerDTO customerDTO,
         Instant createdAt
 ) {}

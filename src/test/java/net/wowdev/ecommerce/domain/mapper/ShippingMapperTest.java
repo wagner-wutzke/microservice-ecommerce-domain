@@ -18,7 +18,7 @@ class ShippingMapperTest {
     @Test
     void mapsShippingBothWays() {
         ShippingDTO dto = new ShippingDTO(
-                ID, ID, ID, ID, DeliveryStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
+                ID, "tx_id", ID, ID, DeliveryStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
 
         ShippingEntity entity = ShippingMapper.toEntity(dto);
 
@@ -29,7 +29,6 @@ class ShippingMapperTest {
         assertEquals(dto.getTrackingUrl(), entity.getTrackingUrl());
         assertEquals(ID, entity.getOrderId());
         assertEquals(ID, entity.getCustomerId());
-        assertEquals(ID, entity.getShippingAddressId());
         assertNull(entity.getCreatedAt());
         assertNull(entity.getModifiedAt());
 
@@ -43,7 +42,6 @@ class ShippingMapperTest {
         assertEquals(dto.getId(), mappedDto.getId());
         assertEquals(dto.getOrderId(), mappedDto.getOrderId());
         assertEquals(dto.getCustomerId(), mappedDto.getCustomerId());
-        assertEquals(dto.getShippingAddressId(), mappedDto.getShippingAddressId());
         assertEquals(dto.getShippingStatus(), mappedDto.getShippingStatus());
         assertEquals(dto.getTrackingNumber(), mappedDto.getTrackingNumber());
         assertEquals(dto.getCarrier(), mappedDto.getCarrier());

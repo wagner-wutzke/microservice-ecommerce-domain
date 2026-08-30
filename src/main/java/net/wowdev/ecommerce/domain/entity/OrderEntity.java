@@ -26,6 +26,9 @@ public class OrderEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
+    @Column(name = "transaction_id", nullable = false)
+    private String transactionId;
+
     @Column(name = "customer_id", nullable = false)
     private UUID customerId;
 

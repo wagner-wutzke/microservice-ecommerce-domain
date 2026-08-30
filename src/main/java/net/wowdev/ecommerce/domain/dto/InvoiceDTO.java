@@ -1,9 +1,6 @@
 package net.wowdev.ecommerce.domain.dto;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.*;
-import net.wowdev.ecommerce.domain.enums.InventoryChangeType;
 
 import java.time.Instant;
 import java.util.UUID;
@@ -14,15 +11,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class InventoryDTO {
+public class InvoiceDTO {
     private UUID id;
     private String transactionId;
-    private UUID productId;
     private UUID orderId;
-    private int currentQuantity;
-    private int changedQuantity;
-    private int previousQuantity;
-    private InventoryChangeType changeType;
+    private UUID customerId;
+    private String invoiceNumber;
+    private boolean delivered;
+    private String documentUrl;
+    private String documentName;
     private Instant createdAt;
     private Instant modifiedAt;
 }

@@ -24,6 +24,9 @@ public class InventoryEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
+    @Column(name = "transaction_id", nullable = false)
+    private String transactionId;
+
     @Column(name = "product_id", nullable = false)
     private UUID productId;
 

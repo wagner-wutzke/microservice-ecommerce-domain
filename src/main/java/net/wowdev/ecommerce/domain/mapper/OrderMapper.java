@@ -17,6 +17,7 @@ public final class OrderMapper {
         }
         OrderEntity orderEntity = new OrderEntity(
                 dto.getId(),
+                dto.getTransactionId(),
                 dto.getCustomerId(),
                 dto.getPaymentMethodId(),
                 dto.getOrderStatus(),
@@ -48,6 +49,7 @@ public final class OrderMapper {
                 .toList();
         return new OrderDTO(
                 entity.getId(),
+                entity.getTransactionId(),
                 entity.getCustomerId(),
                 entity.getPaymentMethodId(),
                 entity.getOrderStatus(),

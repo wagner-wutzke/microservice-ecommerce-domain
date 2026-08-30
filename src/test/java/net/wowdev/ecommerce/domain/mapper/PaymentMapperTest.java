@@ -21,10 +21,10 @@ class PaymentMapperTest {
     void mapsPaymentBothWays() {
         PaymentDTO dto = new PaymentDTO(
                 ID,
+                "tx_id",
                 ID,
                 ID,
                 ID,
-                "tx-1",
                 "token-1",
                 PaymentStatus.COMPLETED,
                 new BigDecimal("25.00"),

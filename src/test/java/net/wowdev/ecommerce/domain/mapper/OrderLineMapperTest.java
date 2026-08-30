@@ -24,6 +24,7 @@ class OrderLineMapperTest {
     void mapsOrderLineAndDoesNotMapOrderBackReference() {
         OrderLineDTO dto = new OrderLineDTO(
                 ID,
+                "tx_id",
                 ID,
                 ID,
                 2,

@@ -2,13 +2,11 @@ package net.wowdev.ecommerce.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import net.wowdev.ecommerce.domain.enums.PaymentMethod;
-import net.wowdev.ecommerce.domain.enums.PaymentStatus;
+import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -18,9 +16,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Entity
-@Table(name = "payments")
+@Table(name = "invoices")
 @EntityListeners(AuditingEntityListener.class)
-public class PaymentEntity {
+public class InvoiceEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
@@ -35,22 +33,17 @@ public class PaymentEntity {
     @Column(name = "customer_id", nullable = false)
     private UUID customerId;
 
-    @Column(name = "payment_method_id", nullable = false)
-    private UUID paymentMethodId;
+    @Column(name = "invoice_number", nullable = false, unique = true)
+    private String invoiceNumber;
 
-    @Column(name = "payment_token", nullable = false, unique = true)
-    private String paymentToken;
+    @Column(name = "delivered", nullable = false)
+    private boolean delivered = false;
 
-    @Column(name = "amount", nullable = false, precision = 19, scale = 2)
-    private BigDecimal amount;
+    @Column(name = "document_url", length = 2048)
+    private String documentUrl;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_method", nullable = false)
-    private PaymentMethod paymentMethod;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "payment_status", nullable = false)
-    private PaymentStatus paymentStatus;
+    @Column(name = "document_name", length = 256)
+    private String documentName;
 
     @CreatedDate
     @Column(name = "created_at", nullable = false, updatable = false)
