@@ -4,10 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.domain.Persistable;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -37,7 +35,7 @@ public class PaymentMethodEntity {
     @Column(name = "expiration", nullable = false)
     private String expiration;
 
-    @Column(name = "cvv", nullable = false,  length = 3)
+    @Column(name = "cvv", nullable = false, length = 3)
     private int cvv;
 
     @Column(name = "card_name", nullable = false)

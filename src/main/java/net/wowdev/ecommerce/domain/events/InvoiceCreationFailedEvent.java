@@ -10,4 +10,5 @@ public record InvoiceCreationFailedEvent(
         String transactionId,
         PaymentDTO paymentDTO,
         Instant createdAt,
-        String reason) {}
+        String reason) {
+}

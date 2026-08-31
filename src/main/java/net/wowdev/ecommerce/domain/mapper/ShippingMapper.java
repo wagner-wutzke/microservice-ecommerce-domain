@@ -5,16 +5,12 @@ import net.wowdev.ecommerce.domain.entity.ShippingEntity;
 
 public final class ShippingMapper {
 
-    private ShippingMapper() {
-    }
-
     public static ShippingEntity toEntity(ShippingDTO dto) {
         if (dto == null) {
             return null;
         }
         return new ShippingEntity(
                 dto.getId(),
-                dto.getTransactionId(),
                 dto.getOrderId(),
                 dto.getCustomerId(),
                 dto.getShippingStatus(),
@@ -31,7 +27,6 @@ public final class ShippingMapper {
         }
         return new ShippingDTO(
                 entity.getId(),
-                entity.getTransactionId(),
                 entity.getOrderId(),
                 entity.getCustomerId(),
                 entity.getShippingStatus(),

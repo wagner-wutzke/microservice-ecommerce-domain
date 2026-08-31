@@ -2,7 +2,6 @@ package net.wowdev.ecommerce.domain.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -23,9 +22,6 @@ public class InvoiceEntity {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
-
-    @Column(name = "transaction_id", nullable = false)
-    private String transactionId;
 
     @Column(name = "order_id", nullable = false)
     private UUID orderId;

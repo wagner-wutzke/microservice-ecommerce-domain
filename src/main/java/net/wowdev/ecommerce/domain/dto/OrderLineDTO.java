@@ -14,7 +14,6 @@ import java.util.UUID;
 @ToString
 public class OrderLineDTO {
     private UUID id;
-    private String transactionId;
     private UUID orderId;
     private UUID productId;
     private int quantity;

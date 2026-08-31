@@ -9,4 +9,5 @@ public record InventoryUpdateCompletedEvent(
         UUID orderId,
         UUID productId,
         int quantity,
-        Instant createdAt) { }
+        Instant createdAt) {
+}

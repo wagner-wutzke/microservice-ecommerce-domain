@@ -21,7 +21,6 @@ class PaymentMapperTest {
     void mapsPaymentBothWays() {
         PaymentDTO dto = new PaymentDTO(
                 ID,
-                "tx_id",
                 ID,
                 ID,
                 ID,
@@ -40,7 +39,6 @@ class PaymentMapperTest {
         assertEquals(dto.getCustomerId(), entity.getCustomerId());
         assertEquals(dto.getPaymentMethodId(), entity.getPaymentMethodId());
         PaymentDTO mappedDto = PaymentMapper.toDto(entity);
-        assertEquals(dto.getTransactionId(), mappedDto.getTransactionId());
         assertEquals(dto.getPaymentMethod(), mappedDto.getPaymentMethod());
         assertEquals(dto.getPaymentStatus(), mappedDto.getPaymentStatus());
         assertNull(entity.getCreatedAt());

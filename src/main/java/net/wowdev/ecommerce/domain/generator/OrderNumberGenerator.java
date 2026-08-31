@@ -19,12 +19,17 @@ import java.util.EnumSet;
  * Hibernate adapts the sequence access to the configured dialect.
  */
 @Component
-public final class OrderNumberGenerator implements BeforeExecutionGenerator, AnnotationBasedGenerator<GeneratedOrderNumber> {
+public final class OrderNumberGenerator implements BeforeExecutionGenerator,
+                                                   AnnotationBasedGenerator<GeneratedOrderNumber> {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     private String sequenceName = "order_number_seq";
+
+    static String format(long sequence, int year) {
+        return "ORD-%04d-%08d".formatted(year, sequence);
+    }
 
     @Override
     public void initialize(GeneratedOrderNumber annotation, GeneratorCreationContext context) {
@@ -58,9 +63,5 @@ public final class OrderNumberGenerator implements BeforeExecutionGenerator, Ann
     @Override
     public boolean generatedOnExecution() {
         return false;
-    }
-
-    static String format(long sequence, int year) {
-        return "ORD-%04d-%08d".formatted(year, sequence);
     }
 }

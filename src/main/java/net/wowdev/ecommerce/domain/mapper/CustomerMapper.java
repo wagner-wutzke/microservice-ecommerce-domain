@@ -16,10 +16,10 @@ public final class CustomerMapper {
         }
 
         List<PaymentMethodEntity> paymentMethodEntities = dto.getPaymentMethods()
-                .stream()
-                .filter(Objects::nonNull)
-                .map(PaymentMethodMapper::toEntity)
-                .toList();
+                                                             .stream()
+                                                             .filter(Objects::nonNull)
+                                                             .map(PaymentMethodMapper::toEntity)
+                                                             .toList();
 
         return new CustomerEntity(
                 dto.getId(),
@@ -47,10 +47,10 @@ public final class CustomerMapper {
         }
 
         List<PaymentMethodDTO> paymentMethodDTOs = entity.getPaymentMethods()
-                .stream()
-                .filter(Objects::nonNull)
-                .map(PaymentMethodMapper::toDto)
-                .toList();
+                                                         .stream()
+                                                         .filter(Objects::nonNull)
+                                                         .map(PaymentMethodMapper::toDto)
+                                                         .toList();
 
         return new CustomerDTO(
                 entity.getId(),

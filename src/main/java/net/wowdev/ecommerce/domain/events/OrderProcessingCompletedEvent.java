@@ -5,10 +5,10 @@ import net.wowdev.ecommerce.domain.dto.OrderDTO;
 import java.time.Instant;
 import java.util.UUID;
 
-
-public record OrderCreationStartedEvent(
+public record OrderProcessingCompletedEvent(
         UUID eventId,
         String transactionId,
         OrderDTO orderDTO,
-        Instant createdAt) {
+        Instant createdAt
+) {
 }

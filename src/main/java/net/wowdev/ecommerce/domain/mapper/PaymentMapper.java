@@ -11,7 +11,6 @@ public final class PaymentMapper {
         }
         return new PaymentEntity(
                 dto.getId(),
-                dto.getTransactionId(),
                 dto.getOrderId(),
                 dto.getCustomerId(),
                 dto.getPaymentMethodId(),
@@ -29,7 +28,6 @@ public final class PaymentMapper {
         }
         return new PaymentDTO(
                 entity.getId(),
-                entity.getTransactionId(),
                 entity.getOrderId(),
                 entity.getCustomerId(),
                 entity.getPaymentMethodId(),

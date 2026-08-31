@@ -5,16 +5,12 @@ import net.wowdev.ecommerce.domain.entity.InvoiceEntity;
 
 public final class InvoiceMapper {
 
-    private InvoiceMapper() {
-    }
-
     public static InvoiceEntity toEntity(InvoiceDTO dto) {
         if (dto == null) {
             return null;
         }
         return new InvoiceEntity(
                 dto.getId(),
-                dto.getTransactionId(),
                 dto.getOrderId(),
                 dto.getCustomerId(),
                 dto.getInvoiceNumber(),
@@ -31,7 +27,6 @@ public final class InvoiceMapper {
         }
         return new InvoiceDTO(
                 entity.getId(),
-                entity.getTransactionId(),
                 entity.getOrderId(),
                 entity.getCustomerId(),
                 entity.getInvoiceNumber(),

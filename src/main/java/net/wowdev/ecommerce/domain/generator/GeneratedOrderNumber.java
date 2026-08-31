@@ -7,7 +7,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/** Marks an order number as generated before an entity is inserted. */
+/**
+ * Marks an order number as generated before an entity is inserted.
+ */
 @ValueGenerationType(generatedBy = OrderNumberGenerator.class)
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD, ElementType.METHOD})

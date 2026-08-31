@@ -1,7 +1,6 @@
 package net.wowdev.ecommerce.domain.dto;
 
 import lombok.*;
-import net.wowdev.ecommerce.domain.entity.PaymentMethodEntity;
 import net.wowdev.ecommerce.domain.enums.CustomerStatus;
 
 import java.time.Instant;

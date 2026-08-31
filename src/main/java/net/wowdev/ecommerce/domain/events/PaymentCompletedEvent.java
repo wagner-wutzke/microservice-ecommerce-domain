@@ -9,4 +9,5 @@ public record PaymentCompletedEvent(
         UUID eventId,
         String transactionId,
         PaymentDTO paymentDTO,
-        Instant createdAt) {}
+        Instant createdAt) {
+}

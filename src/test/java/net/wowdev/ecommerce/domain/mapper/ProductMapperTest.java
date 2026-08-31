@@ -18,7 +18,7 @@ class ProductMapperTest {
     @Test
     void mapsProductBothWays() {
         ProductDTO dto = new ProductDTO(ID, "Book", "A book", BigDecimal.valueOf(12.5),
-                "Books", NOW, NOW);
+                                        "Books", NOW, NOW);
 
         ProductEntity entity = ProductMapper.toEntity(dto);
 

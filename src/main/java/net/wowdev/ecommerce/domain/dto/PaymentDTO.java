@@ -16,7 +16,6 @@ import java.util.UUID;
 @ToString
 public class PaymentDTO {
     private UUID id;
-    private String transactionId;
     private UUID orderId;
     private UUID customerId;
     private UUID paymentMethodId;

@@ -13,7 +13,6 @@ import java.util.UUID;
 @ToString
 public class InvoiceDTO {
     private UUID id;
-    private String transactionId;
     private UUID orderId;
     private UUID customerId;
     private String invoiceNumber;

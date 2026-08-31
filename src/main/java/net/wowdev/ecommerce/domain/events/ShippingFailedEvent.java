@@ -11,4 +11,5 @@ public record ShippingFailedEvent(
         ShippingDTO shippingDTO,
         String reason,
         Instant createdAt
-) {}
+) {
+}

@@ -10,4 +10,5 @@ public record CustomerDataLoadedEvent(
         String transactionId,
         CustomerDTO customerDTO,
         Instant createdAt
-) {}
+) {
+}

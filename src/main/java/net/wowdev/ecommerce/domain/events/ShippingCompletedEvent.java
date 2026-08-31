@@ -7,8 +7,9 @@ import java.util.UUID;
 
 
 public record ShippingCompletedEvent(
-    UUID eventId,
-    String transactionId,
-    ShippingDTO shippingDTO,
-    Instant createdAt
-) {}
+        UUID eventId,
+        String transactionId,
+        ShippingDTO shippingDTO,
+        Instant createdAt
+) {
+}

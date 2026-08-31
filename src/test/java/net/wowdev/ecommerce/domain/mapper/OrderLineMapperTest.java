@@ -16,15 +16,9 @@ class OrderLineMapperTest {
     private static final Instant NOW = Instant.parse("2026-01-01T00:00:00Z");
 
     @Test
-    void canInstantiateMapper() {
-        assertEquals(OrderLineMapper.class, new OrderLineMapper().getClass());
-    }
-
-    @Test
     void mapsOrderLineAndDoesNotMapOrderBackReference() {
         OrderLineDTO dto = new OrderLineDTO(
                 ID,
-                "tx_id",
                 ID,
                 ID,
                 2,

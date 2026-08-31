@@ -17,7 +17,6 @@ public final class OrderMapper {
         }
         OrderEntity orderEntity = new OrderEntity(
                 dto.getId(),
-                dto.getTransactionId(),
                 dto.getCustomerId(),
                 dto.getPaymentMethodId(),
                 dto.getOrderStatus(),
@@ -31,11 +30,11 @@ public final class OrderMapper {
                 dto.getCreatedAt(),
                 dto.getModifiedAt());
         List<OrderLineEntity> lines = dto.getOrderLines().stream()
-                .filter(Objects::nonNull)
-                .map(OrderLineMapper::toEntity)
-                .toList();
+                                         .filter(Objects::nonNull)
+                                         .map(OrderLineMapper::toEntity)
+                                         .toList();
         lines.forEach(line -> line.setOrderId(orderEntity.getId()));
-        orderEntity.setOrderLines(new java.util.ArrayList<>(lines));
+        orderEntity.setOrderLines(new ArrayList<>(lines));
         return orderEntity;
     }
 
@@ -44,12 +43,11 @@ public final class OrderMapper {
             return null;
         }
         List<OrderLineDTO> orderLines = entity.getOrderLines().stream()
-                .filter(Objects::nonNull)
-                .map(OrderLineMapper::toDto)
-                .toList();
+                                              .filter(Objects::nonNull)
+                                              .map(OrderLineMapper::toDto)
+                                              .toList();
         return new OrderDTO(
                 entity.getId(),
-                entity.getTransactionId(),
                 entity.getCustomerId(),
                 entity.getPaymentMethodId(),
                 entity.getOrderStatus(),

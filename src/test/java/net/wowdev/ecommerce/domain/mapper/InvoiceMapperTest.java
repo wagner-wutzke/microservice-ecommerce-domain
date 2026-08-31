@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.time.Instant;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class InvoiceMapperTest {
     private static final UUID ID = UUID.randomUUID();
@@ -22,7 +20,6 @@ class InvoiceMapperTest {
     void mapsInvoiceBothWays() {
         InvoiceDTO dto = new InvoiceDTO(
                 ID,
-                "tx_id",
                 ORDER_ID,
                 CUSTOMER_ID,
                 "INV-2026-0001",
@@ -35,7 +32,6 @@ class InvoiceMapperTest {
         InvoiceEntity entity = InvoiceMapper.toEntity(dto);
 
         assertEquals(dto.getId(), entity.getId());
-        assertEquals(dto.getTransactionId(), entity.getTransactionId());
         assertEquals(dto.getOrderId(), entity.getOrderId());
         assertEquals(dto.getCustomerId(), entity.getCustomerId());
         assertEquals(dto.getInvoiceNumber(), entity.getInvoiceNumber());
@@ -48,7 +44,6 @@ class InvoiceMapperTest {
         InvoiceDTO mappedDto = InvoiceMapper.toDto(entity);
 
         assertEquals(dto.getId(), mappedDto.getId());
-        assertEquals(dto.getTransactionId(), mappedDto.getTransactionId());
         assertEquals(dto.getOrderId(), mappedDto.getOrderId());
         assertEquals(dto.getCustomerId(), mappedDto.getCustomerId());
         assertEquals(dto.getInvoiceNumber(), mappedDto.getInvoiceNumber());
@@ -62,7 +57,7 @@ class InvoiceMapperTest {
     @Test
     void mapsUndeliveredInvoice() {
         InvoiceEntity entity = new InvoiceEntity(
-                ID, "tx_id", ORDER_ID, CUSTOMER_ID, "INV-2026-0002", false,
+                ID, ORDER_ID, CUSTOMER_ID, "INV-2026-0002", false,
                 null, null, NOW, NOW);
 
         InvoiceDTO dto = InvoiceMapper.toDto(entity);

@@ -11,4 +11,5 @@ public record InventoryUpdateFailedEvent(
         int quantity,
         String reason,
         Instant createdAt
-) {}
+) {
+}

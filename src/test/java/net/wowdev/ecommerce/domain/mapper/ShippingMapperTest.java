@@ -18,7 +18,7 @@ class ShippingMapperTest {
     @Test
     void mapsShippingBothWays() {
         ShippingDTO dto = new ShippingDTO(
-                ID, "tx_id", ID, ID, DeliveryStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
+                ID, ID, ID, DeliveryStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
 
         ShippingEntity entity = ShippingMapper.toEntity(dto);
 

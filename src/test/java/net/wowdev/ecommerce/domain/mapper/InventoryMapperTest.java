@@ -18,7 +18,7 @@ class InventoryMapperTest {
     @Test
     void mapsInventoryBothWays() {
         InventoryDTO dto = new InventoryDTO(
-                ID, "tx_id", ID, ID, 10, 2, 8, InventoryChangeType.INVENTORY_INCREASE, NOW, NOW);
+                ID, ID, ID, 10, 2, 8, InventoryChangeType.INVENTORY_INCREASE, NOW, NOW);
 
         InventoryEntity entity = InventoryMapper.toEntity(dto);
 

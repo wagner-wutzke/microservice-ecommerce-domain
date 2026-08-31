@@ -1,7 +1,5 @@
 package net.wowdev.ecommerce.domain.dto;
 
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import lombok.*;
 import net.wowdev.ecommerce.domain.enums.InventoryChangeType;
 
@@ -16,7 +14,6 @@ import java.util.UUID;
 @ToString
 public class InventoryDTO {
     private UUID id;
-    private String transactionId;
     private UUID productId;
     private UUID orderId;
     private int currentQuantity;

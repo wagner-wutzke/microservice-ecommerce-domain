@@ -1,7 +1,6 @@
 package net.wowdev.ecommerce.domain.mapper;
 
 import net.wowdev.ecommerce.domain.dto.OrderLineDTO;
-import net.wowdev.ecommerce.domain.entity.OrderEntity;
 import net.wowdev.ecommerce.domain.entity.OrderLineEntity;
 
 public final class OrderLineMapper {
@@ -12,7 +11,6 @@ public final class OrderLineMapper {
         }
         return new OrderLineEntity(
                 dto.getId(),
-                dto.getTransactionId(),
                 dto.getProductId(),
                 dto.getOrderId(),
                 dto.getQuantity(),
@@ -27,7 +25,6 @@ public final class OrderLineMapper {
         }
         return new OrderLineDTO(
                 entity.getId(),
-                entity.getTransactionId(),
                 entity.getOrderId(),
                 entity.getProductId(),
                 entity.getQuantity(),
