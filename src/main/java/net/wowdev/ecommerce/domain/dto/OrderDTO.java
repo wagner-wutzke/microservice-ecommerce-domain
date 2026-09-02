@@ -1,12 +1,11 @@
 package net.wowdev.ecommerce.domain.dto;
 
-import lombok.*;
-import net.wowdev.ecommerce.domain.enums.OrderStatus;
-
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
+import lombok.*;
+import net.wowdev.ecommerce.domain.enums.OrderStatus;
 
 @Getter
 @Setter
@@ -15,17 +14,17 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 public class OrderDTO {
-    private UUID id;
-    private UUID customerId;
-    private UUID paymentMethodId;
-    private OrderStatus orderStatus;
-    private BigDecimal totalAmount;
-    private BigDecimal shippingAmount;
-    private BigDecimal taxAmount;
-    private BigDecimal discountAmount;
-    private BigDecimal orderAmount;
-    private String orderNumber;
-    private List<OrderLineDTO> orderLines;
-    private Instant createdAt;
-    private Instant modifiedAt;
+  private UUID id;
+  private UUID customerId;
+  private UUID paymentMethodId;
+  private OrderStatus orderStatus;
+  private BigDecimal totalAmount;
+  private BigDecimal shippingAmount;
+  private BigDecimal taxAmount;
+  private BigDecimal discountAmount;
+  private BigDecimal orderAmount;
+  private String orderNumber;
+  private List<OrderLineDTO> orderLines;
+  private Instant createdAt;
+  private Instant modifiedAt;
 }

@@ -1,14 +1,13 @@
 package net.wowdev.ecommerce.domain.entity;
 
 import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.Instant;
+import java.util.UUID;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,28 +18,28 @@ import java.util.UUID;
 @Table(name = "products")
 @EntityListeners(AuditingEntityListener.class)
 public class ProductEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id", nullable = false, updatable = false)
-    private UUID id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.UUID)
+  @Column(name = "id", nullable = false, updatable = false)
+  private UUID id;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+  @Column(name = "name", nullable = false)
+  private String name;
 
-    @Column(name = "description", nullable = false)
-    private String description;
+  @Column(name = "description", nullable = false)
+  private String description;
 
-    @Column(name = "unit_price", nullable = false, precision = 19, scale = 2)
-    private BigDecimal unitPrice;
+  @Column(name = "unit_price", nullable = false, precision = 19, scale = 2)
+  private BigDecimal unitPrice;
 
-    @Column(name = "category", nullable = false)
-    private String category;
+  @Column(name = "category", nullable = false)
+  private String category;
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+  @CreatedDate
+  @Column(name = "created_at", nullable = false, updatable = false)
+  private Instant createdAt;
 
-    @LastModifiedDate
-    @Column(name = "modified_at")
-    private Instant modifiedAt;
+  @LastModifiedDate
+  @Column(name = "modified_at")
+  private Instant modifiedAt;
 }

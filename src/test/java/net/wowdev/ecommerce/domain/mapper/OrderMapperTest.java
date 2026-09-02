@@ -1,10 +1,7 @@
 package net.wowdev.ecommerce.domain.mapper;
 
-import net.wowdev.ecommerce.domain.dto.OrderDTO;
-import net.wowdev.ecommerce.domain.dto.OrderLineDTO;
-import net.wowdev.ecommerce.domain.entity.OrderEntity;
-import net.wowdev.ecommerce.domain.enums.OrderStatus;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.math.BigDecimal;
 import java.time.Instant;
@@ -12,9 +9,11 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import net.wowdev.ecommerce.domain.dto.OrderDTO;
+import net.wowdev.ecommerce.domain.dto.OrderLineDTO;
+import net.wowdev.ecommerce.domain.entity.OrderEntity;
+import net.wowdev.ecommerce.domain.enums.OrderStatus;
+import org.junit.jupiter.api.Test;
 
 class OrderMapperTest {
     private static final UUID ID = UUID.randomUUID();

@@ -1,13 +1,12 @@
 package net.wowdev.ecommerce.domain.entity;
 
 import jakarta.persistence.*;
+import java.time.Instant;
+import java.util.UUID;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import java.time.Instant;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,33 +18,33 @@ import java.util.UUID;
 @EntityListeners(AuditingEntityListener.class)
 public class PaymentMethodEntity {
 
-    @Id
-    @Column(name = "id", nullable = false, updatable = false)
-    private UUID id;
+  @Id
+  @Column(name = "id", nullable = false, updatable = false)
+  private UUID id;
 
-    @Column(name = "customer_id", nullable = false)
-    private UUID customerId;
+  @Column(name = "customer_id", nullable = false)
+  private UUID customerId;
 
-    @Column(name = "card_number", nullable = false)
-    private String cardNumber;
+  @Column(name = "card_number", nullable = false)
+  private String cardNumber;
 
-    @Column(name = "owner_name", nullable = false)
-    private String ownerName;
+  @Column(name = "owner_name", nullable = false)
+  private String ownerName;
 
-    @Column(name = "expiration", nullable = false)
-    private String expiration;
+  @Column(name = "expiration", nullable = false)
+  private String expiration;
 
-    @Column(name = "cvv", nullable = false, length = 3)
-    private int cvv;
+  @Column(name = "cvv", nullable = false, length = 3)
+  private int cvv;
 
-    @Column(name = "card_name", nullable = false)
-    private String cardName;
+  @Column(name = "card_name", nullable = false)
+  private String cardName;
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private Instant createdAt;
+  @CreatedDate
+  @Column(name = "created_at", nullable = false, updatable = false)
+  private Instant createdAt;
 
-    @LastModifiedDate
-    @Column(name = "modified_at")
-    private Instant modifiedAt;
+  @LastModifiedDate
+  @Column(name = "modified_at")
+  private Instant modifiedAt;
 }

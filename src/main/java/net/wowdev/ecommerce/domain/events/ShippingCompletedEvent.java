@@ -1,15 +1,12 @@
 package net.wowdev.ecommerce.domain.events;
 
-import net.wowdev.ecommerce.domain.dto.ShippingDTO;
-
 import java.time.Instant;
 import java.util.UUID;
-
+import net.wowdev.ecommerce.domain.dto.ShippingDTO;
 
 public record ShippingCompletedEvent(
-        UUID eventId,
-        String transactionId,
-        ShippingDTO shippingDTO,
-        Instant createdAt
-) {
-}
+    UUID eventId,
+    String transactionId,
+    ShippingDTO shippingDTO,
+    Instant createdAt,
+    String origin) {}

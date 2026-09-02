@@ -1,13 +1,12 @@
 package net.wowdev.ecommerce.domain.mapper;
 
-import net.wowdev.ecommerce.domain.dto.InvoiceDTO;
-import net.wowdev.ecommerce.domain.entity.InvoiceEntity;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Instant;
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
+import net.wowdev.ecommerce.domain.dto.InvoiceDTO;
+import net.wowdev.ecommerce.domain.entity.InvoiceEntity;
+import org.junit.jupiter.api.Test;
 
 class InvoiceMapperTest {
     private static final UUID ID = UUID.randomUUID();

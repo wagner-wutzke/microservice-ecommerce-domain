@@ -1,9 +1,9 @@
 package net.wowdev.ecommerce.domain.enums;
 
 public enum PaymentStatus {
-    PENDING,
-    AUTHORIZED,
-    COMPLETED,
-    REJECTED,
-    FAILED
+  PENDING,
+  AUTHORIZED,
+  COMPLETED,
+  REJECTED,
+  FAILED
 }

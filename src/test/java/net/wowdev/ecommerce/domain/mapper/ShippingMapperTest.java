@@ -1,15 +1,14 @@
 package net.wowdev.ecommerce.domain.mapper;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import java.time.Instant;
+import java.util.UUID;
 import net.wowdev.ecommerce.domain.dto.ShippingDTO;
 import net.wowdev.ecommerce.domain.entity.ShippingEntity;
 import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
 import org.junit.jupiter.api.Test;
-
-import java.time.Instant;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
 
 class ShippingMapperTest {
     private static final UUID ID = UUID.randomUUID();

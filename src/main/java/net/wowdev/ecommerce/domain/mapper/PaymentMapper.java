@@ -5,37 +5,39 @@ import net.wowdev.ecommerce.domain.entity.PaymentEntity;
 
 public final class PaymentMapper {
 
-    public static PaymentEntity toEntity(PaymentDTO dto) {
-        if (dto == null) {
-            return null;
-        }
-        return new PaymentEntity(
-                dto.getId(),
-                dto.getOrderId(),
-                dto.getCustomerId(),
-                dto.getPaymentMethodId(),
-                dto.getPaymentToken(),
-                dto.getAmount(),
-                dto.getPaymentMethod(),
-                dto.getPaymentStatus(),
-                null,
-                null);
+  public static PaymentEntity toEntity(PaymentDTO dto) {
+    if (dto == null) {
+      return null;
     }
+    return new PaymentEntity(
+        dto.getId(),
+        dto.getOrderId(),
+        dto.getCustomerId(),
+        dto.getPaymentMethodId(),
+        dto.getPaymentToken(),
+        dto.getTransactionId(),
+        dto.getAmount(),
+        dto.getPaymentMethod(),
+        dto.getPaymentStatus(),
+        null,
+        null);
+  }
 
-    public static PaymentDTO toDto(PaymentEntity entity) {
-        if (entity == null) {
-            return null;
-        }
-        return new PaymentDTO(
-                entity.getId(),
-                entity.getOrderId(),
-                entity.getCustomerId(),
-                entity.getPaymentMethodId(),
-                entity.getPaymentToken(),
-                entity.getPaymentStatus(),
-                entity.getAmount(),
-                entity.getPaymentMethod(),
-                entity.getCreatedAt(),
-                entity.getModifiedAt());
+  public static PaymentDTO toDto(PaymentEntity entity) {
+    if (entity == null) {
+      return null;
     }
+    return new PaymentDTO(
+        entity.getId(),
+        entity.getOrderId(),
+        entity.getCustomerId(),
+        entity.getPaymentMethodId(),
+        entity.getPaymentToken(),
+        entity.getTransactionId(),
+        entity.getPaymentStatus(),
+        entity.getAmount(),
+        entity.getPaymentMethod(),
+        entity.getCreatedAt(),
+        entity.getModifiedAt());
+  }
 }

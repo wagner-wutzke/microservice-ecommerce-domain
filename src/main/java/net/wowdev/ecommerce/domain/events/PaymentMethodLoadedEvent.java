@@ -1,14 +1,12 @@
 package net.wowdev.ecommerce.domain.events;
 
-import net.wowdev.ecommerce.domain.dto.CustomerDTO;
-
 import java.time.Instant;
 import java.util.UUID;
+import net.wowdev.ecommerce.domain.dto.PaymentMethodDTO;
 
 public record PaymentMethodLoadedEvent(
-        UUID eventId,
-        String transactionId,
-        CustomerDTO customerDTO,
-        Instant createdAt
-) {
-}
+    UUID eventId,
+    String transactionId,
+    PaymentMethodDTO paymentMethodDTO,
+    Instant createdAt,
+    String origin) {}
