@@ -2,11 +2,12 @@ package net.wowdev.ecommerce.domain.events;
 
 import java.time.Instant;
 import java.util.UUID;
+import net.wowdev.ecommerce.domain.dto.OrderDTO;
 
 public record OrderProcessingFailedEvent(
     UUID eventId,
     String transactionId,
-    UUID orderId,
+    OrderDTO orderDTO,
     String reason,
     Instant createdAt,
     String origin) {}

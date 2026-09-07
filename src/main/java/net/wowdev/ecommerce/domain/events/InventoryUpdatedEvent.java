@@ -2,12 +2,11 @@ package net.wowdev.ecommerce.domain.events;
 
 import java.time.Instant;
 import java.util.UUID;
-import net.wowdev.ecommerce.domain.dto.ShippingDTO;
+import net.wowdev.ecommerce.domain.dto.OrderDTO;
 
-public record ShippingFailedEvent(
+public record InventoryUpdatedEvent(
     UUID eventId,
     String transactionId,
-    ShippingDTO shippingDTO,
-    String reason,
+    OrderDTO orderDTO,
     Instant createdAt,
     String origin) {}
