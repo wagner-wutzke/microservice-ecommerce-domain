@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
 import lombok.*;
-import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
+import net.wowdev.ecommerce.domain.enums.ShipmentStatus;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,7 +17,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Entity
 @Table(name = "shippings")
 @EntityListeners(AuditingEntityListener.class)
-public class ShippingEntity {
+public class ShipmentEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.UUID)
   @Column(name = "id", nullable = false, updatable = false)
@@ -31,7 +31,7 @@ public class ShippingEntity {
 
   @Enumerated(EnumType.STRING)
   @Column(name = "shipping_status", nullable = false)
-  private DeliveryStatus shippingStatus;
+  private ShipmentStatus shippingStatus;
 
   @Column(name = "tracking_number", nullable = false, unique = true)
   private String trackingNumber;

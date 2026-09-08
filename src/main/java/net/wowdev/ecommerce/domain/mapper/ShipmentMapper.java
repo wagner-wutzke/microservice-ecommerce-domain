@@ -1,15 +1,15 @@
 package net.wowdev.ecommerce.domain.mapper;
 
-import net.wowdev.ecommerce.domain.dto.ShippingDTO;
-import net.wowdev.ecommerce.domain.entity.ShippingEntity;
+import net.wowdev.ecommerce.domain.dto.ShipmentDTO;
+import net.wowdev.ecommerce.domain.entity.ShipmentEntity;
 
-public final class ShippingMapper {
+public final class ShipmentMapper {
 
-  public static ShippingEntity toEntity(ShippingDTO dto) {
+  public static ShipmentEntity toEntity(ShipmentDTO dto) {
     if (dto == null) {
       return null;
     }
-    return new ShippingEntity(
+    return new ShipmentEntity(
         dto.getId(),
         dto.getOrderId(),
         dto.getCustomerId(),
@@ -21,11 +21,11 @@ public final class ShippingMapper {
         null);
   }
 
-  public static ShippingDTO toDto(ShippingEntity entity) {
+  public static ShipmentDTO toDto(ShipmentEntity entity) {
     if (entity == null) {
       return null;
     }
-    return new ShippingDTO(
+    return new ShipmentDTO(
         entity.getId(),
         entity.getOrderId(),
         entity.getCustomerId(),

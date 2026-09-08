@@ -5,21 +5,21 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.time.Instant;
 import java.util.UUID;
-import net.wowdev.ecommerce.domain.dto.ShippingDTO;
-import net.wowdev.ecommerce.domain.entity.ShippingEntity;
-import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
+import net.wowdev.ecommerce.domain.dto.ShipmentDTO;
+import net.wowdev.ecommerce.domain.entity.ShipmentEntity;
+import net.wowdev.ecommerce.domain.enums.ShipmentStatus;
 import org.junit.jupiter.api.Test;
 
-class ShippingMapperTest {
+class ShipmentMapperTest {
     private static final UUID ID = UUID.randomUUID();
     private static final Instant NOW = Instant.parse("2026-01-01T00:00:00Z");
 
     @Test
     void mapsShippingBothWays() {
-        ShippingDTO dto = new ShippingDTO(
-                ID, ID, ID, DeliveryStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
+        ShipmentDTO dto = new ShipmentDTO(
+                ID, ID, ID, ShipmentStatus.IN_TRANSIT, "TRACK-1", "Carrier", "https://carrier/track-1", NOW, NOW);
 
-        ShippingEntity entity = ShippingMapper.toEntity(dto);
+        ShipmentEntity entity = ShipmentMapper.toEntity(dto);
 
         assertEquals(dto.getId(), entity.getId());
         assertEquals(dto.getShippingStatus(), entity.getShippingStatus());
@@ -31,7 +31,7 @@ class ShippingMapperTest {
         assertNull(entity.getCreatedAt());
         assertNull(entity.getModifiedAt());
 
-        ShippingDTO mappedDto = ShippingMapper.toDto(entity);
+        ShipmentDTO mappedDto = ShipmentMapper.toDto(entity);
 
         assertEquals(dto.getId(), mappedDto.getId());
         assertEquals(dto.getShippingStatus(), mappedDto.getShippingStatus());
@@ -51,7 +51,7 @@ class ShippingMapperTest {
 
     @Test
     void returnsNullForNullShipping() {
-        assertNull(ShippingMapper.toEntity(null));
-        assertNull(ShippingMapper.toDto(null));
+        assertNull(ShipmentMapper.toEntity(null));
+        assertNull(ShipmentMapper.toDto(null));
     }
 }

@@ -3,7 +3,7 @@ package net.wowdev.ecommerce.domain.dto;
 import java.time.Instant;
 import java.util.UUID;
 import lombok.*;
-import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
+import net.wowdev.ecommerce.domain.enums.ShipmentStatus;
 
 @Getter
 @Setter
@@ -11,11 +11,11 @@ import net.wowdev.ecommerce.domain.enums.DeliveryStatus;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class ShippingDTO {
+public class ShipmentDTO {
   private UUID id;
   private UUID orderId;
   private UUID customerId;
-  private DeliveryStatus shippingStatus;
+  private ShipmentStatus shippingStatus;
   private String trackingNumber;
   private String carrier;
   private String trackingUrl;
