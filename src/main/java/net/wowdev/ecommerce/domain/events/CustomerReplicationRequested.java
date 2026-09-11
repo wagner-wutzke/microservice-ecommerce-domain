@@ -2,12 +2,11 @@ package net.wowdev.ecommerce.domain.events;
 
 import java.time.Instant;
 import java.util.UUID;
-import net.wowdev.ecommerce.domain.dto.OrderDTO;
+import net.wowdev.ecommerce.domain.dto.CustomerDTO;
 
-public record InvoiceFailedEvent(
+public record CustomerReplicationRequested(
     UUID eventId,
     String transactionId,
-    OrderDTO ordetDTO,
+    CustomerDTO customerDTO,
     Instant createdAt,
-    String reason,
     String origin) {}

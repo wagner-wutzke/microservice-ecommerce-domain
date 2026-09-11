@@ -2,11 +2,12 @@ package net.wowdev.ecommerce.domain.events;
 
 import java.time.Instant;
 import java.util.UUID;
-import net.wowdev.ecommerce.domain.dto.PaymentMethodDTO;
+import net.wowdev.ecommerce.domain.dto.CustomerDTO;
 
-public record PaymentMethodLoadedEvent(
+public record CustomerReplicationFailed(
     UUID eventId,
     String transactionId,
-    PaymentMethodDTO paymentMethodDTO,
+    CustomerDTO customerDTO,
+    String reason,
     Instant createdAt,
     String origin) {}

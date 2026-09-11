@@ -4,7 +4,7 @@ import java.time.Instant;
 import java.util.UUID;
 import net.wowdev.ecommerce.domain.dto.OrderDTO;
 
-public record ShipmentFailedEvent(
+public record InventoryFailed(
     UUID eventId,
     String transactionId,
     OrderDTO orderDTO,

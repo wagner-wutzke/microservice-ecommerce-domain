@@ -4,5 +4,9 @@ import java.time.Instant;
 import java.util.UUID;
 import net.wowdev.ecommerce.domain.dto.OrderDTO;
 
-public record OrderProcessingStartedEvent(
-    UUID eventId, String transactionId, OrderDTO orderDTO, Instant createdAt, String origin) {}
+public record InvoiceCompleted(
+    UUID eventId,
+    String transactionId,
+    OrderDTO ordetDTO,
+    Instant createdAt,
+    String origin) {}
